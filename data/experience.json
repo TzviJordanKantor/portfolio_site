@@ -1,0 +1,684 @@
+[
+  {
+    "id": "cyberark",
+    "company": "CyberArk",
+    "role": "UX and Product Content Lead",
+    "period": "2025 – 2026",
+    "location": "Tel Aviv, Israel",
+    "logo": "/assets/logos/cyberark.png",
+    "color": "#2D5986",
+    "summary": "Built and scaled UX writing guidance for 20 technical writers across 4 time zones, and applied it to enterprise identity-security flows.",
+    "expanded": "CyberArk tested my training at scale: taking the content operations skills from previous roles and applying them across a distributed technical-writing org, working on enterprise cybersecurity surfaces. Additionally, I created infrastructure for AI-assisted prototyping, and shipped content for end-to-end identity security product flows.",
+    "wins": [
+      "Built the V1 UX writing style guide where no unified microcopy system existed.",
+      "Trained 20 technical writers across 4 time zones in UX writing, product thinking, and user-state frameworks.",
+      "Defined UX writing as a distinct discipline inside a technical-writing-heavy organization.",
+      "Integrated style-guide logic into an internal Figma Make prototyping workflow.",
+      "Helped generate style-guide-aligned UI concepts before formal writer review.",
+      "Contributed UX content to shipped SHIP flows after the Palo Alto acquisition.",
+      "Coordinated content across product, design, writing, and enterprise stakeholders."
+    ],
+    "owned": [
+      "UX writing style guide",
+      "Writer training",
+      "Microcopy governance",
+      "UX writing workshops",
+      "Style-guide-aligned content patterns",
+      "SHIP content",
+      "Content/design-system integration",
+      "AI-assisted prototyping workflow"
+    ],
+    "tools": [
+      "Axure",
+      "GPT",
+      "Claude",
+      "Figma",
+      "Gamma"
+    ],
+    "note": "Note: This role ended during the Palo Alto Networks acquisition and related headcount reduction.",
+    "projects": [
+      {
+        "id": "cyberark-product-ui-videos",
+        "title": "Product UI Videos",
+        "type": "video",
+        "summary": "Screen recordings of identity security product flows at CyberArk. Copy covers access control, session management, privilege security, and third-party vendor access in enterprise environments.",
+        "context": "These recordings show product UI work across identity security flows where copy had to clarify access, privilege, and user action for enterprise admins. The language had to be precise enough for security-conscious users and clear enough to reduce error in high-stakes contexts.",
+        "samples": [
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-command-center.mp4",
+            "caption": "Identity security command center",
+            "poster": "/assets/work-samples/cyberark/cyberark-identity-platform.jpg"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-intelligent-session.mp4",
+            "caption": "Intelligent session management",
+            "poster": "/assets/work-samples/cyberark/cyberark-identity-platform.jpg"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-secure-third-party.mp4",
+            "caption": "Secure third-party vendor access",
+            "poster": "/assets/work-samples/cyberark/cyberark-identity-platform.jpg"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-workforce-endpoint-privilege.mp4",
+            "caption": "Workforce endpoint privilege security",
+            "poster": "/assets/work-samples/cyberark/cyberark-identity-platform.jpg"
+          }
+        ]
+      },
+      {
+        "id": "cyberark-style-guide",
+        "title": "Microcopy & UX Writing Style Guide",
+        "type": "system",
+        "summary": "A V1 style guide defining the language, patterns, and process for product microcopy across the CyberArk platform. The recipe built frameworks and asset-level templates for pages, dialogs, errors, and empty states, etc.",
+        "context": "CyberArk had no shared microcopy standards. I built the V1 guide grounded in real product work, stakeholder interviews, and SHIP flows. The guide needed to work as a reference during reviews and as a prompt for new writing - practical insturctions with a philosophical context.",
+        "decisions": [
+          "Organized everything around a single principle: 'Great text = (What + So What + What Next) divided by User State of Mind'. The guide had only one thing to internalize, not a list of arbitrary rules",
+          "Defined a tone spectrum with Instructive as the default and Helpful or Reassuring for moments when users are blocked or anxious. This reduced subjective debates about taste and give reviewers a shared vocabulary",
+          "Built patterns as fill-in-the-blank templates with parenthetical guidance and bracketed slots, so they could be applied at point of work rather than retrospectively",
+          "Standardized action verb language across the product: 'Remove access' and 'Remove account' replaced the inconsistent mix of 'Delete', 'Remove it', and informal variants in use across teams"
+        ],
+        "impact": [
+          "Gave writers, designers, and PMs a shared language for microcopy decisions across the product suite",
+          "Reduced ping-ponging over wording in design reviews by turning opinion into pattern",
+          "V1 shipped within my first three months, covering core patterns for pages, dialogs, errors, empty states, and controls. Glossary and mobile-specific patterns planned for V2"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-style-guide-p1.png",
+            "caption": "Style guide cover"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-style-guide-p2.png",
+            "caption": "Voice & tone principles"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-style-guide-p3.png",
+            "caption": "Microcopy patterns"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-style-guide-p4.png",
+            "caption": "Component copy rules"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-style-guide-p5.png",
+            "caption": "Error message framework"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-style-guide-p6.png",
+            "caption": "Terminology standards"
+          }
+        ]
+      },
+      {
+        "id": "cyberark-ux-principles",
+        "title": "UX Writing Principles Workshop",
+        "type": "system",
+        "summary": "A 10-part workshop framing every microcopy decision around how users actually see, read, decide, and make mistakes. Developed and delivered to the CyberArk product team.",
+        "context": "Before the team could align on patterns, they needed a shared mental model of why those patterns exist. I built and ran a workshop anchoring microcopy decisions in cognitive science, from visual hierarchy and scanning behavior to error design and decision load.",
+        "decisions": [
+          "Rather than leading with UX writing conventions, we discussed how people read, decide, and make mistakes. This gave our team vocabulary to collaborate more effectively with designers and PMs",
+          "Structured the workshop around 10 questions designers actually ask while working. Each principle was grounded in a real product screen",
+          "Connected each principle explicitly to writing decisions: cognitive load maps to shorter strings, error design maps to safe exits and recovery copy, recognition over recall maps to consistent terminology"
+        ],
+        "impact": [
+          "Established shared vocabulary (i.e., cognitive load, recognition over recall, progressive disclosure) that the team could use to ground design arguments in user outcomes rather than personal preference",
+          "Enabled reviewers to articulate rationale when discussing copy decisions, reducing revision cycles driven by opinion"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-ux-principles-p1.png",
+            "caption": "UX principles framework"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-ux-principles-p2.png",
+            "caption": "Problem framing method"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-ux-principles-p3.png",
+            "caption": "User context mapping"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-ux-principles-p4.png",
+            "caption": "Decision criteria"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-ux-principles-p5.png",
+            "caption": "Moment-of-use analysis"
+          },
+          {
+            "src": "/assets/work-samples/cyberark/cyberark-ux-principles-p6.png",
+            "caption": "Copy strategy applied"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elementor",
+    "company": "Elementor",
+    "role": "Sr. Content Designer",
+    "period": "2021 – 2025",
+    "location": "Tel Aviv, Israel",
+    "logo": "/assets/logos/elementor.png",
+    "color": "#C02273",
+    "summary": "Built Elementor's UX writing function from scratch, shaping product voice, workflows, style guidance, and writer collaboration across a product used by millions.",
+    "expanded": "At Elementor, I took on a leap to full-product ownership: the first dedicated UX writer, function-builder, style-guide creator, guild organizer, and voice-system owner across every layer of user interaction",
+    "wins": [
+      "Established UX writing as a product discipline inside Elementor.",
+      "Created workflows with design, product, development, legal, support, and marketing partners.",
+      "Wrote across editor, platform, hosting, onboarding, dashboards, transactional emails, and backend user flows.",
+      "Built style-guide and design-system relationships for more consistent product language.",
+      "Founded a Writers Guild and trained teams on shared voice and tone.",
+      "Created early prompt/custom GPT workflows around style-guide-aligned product content.",
+      "Helped shape user-facing voice for millions of Elementor users."
+    ],
+    "owned": [
+      "UX writing function",
+      "Product voice",
+      "Style guide",
+      "Writers Guild",
+      "Editor and platform copy",
+      "Onboarding flows",
+      "Dashboard UX copy",
+      "Transactional emails",
+      "Cross-functional writing workflows"
+    ],
+    "tools": [
+      "Figma",
+      "Gamma",
+      "GPT",
+      "Redshift",
+      "Jira"
+    ],
+    "projects": [
+      {
+        "id": "elementor-hiring-process-video",
+        "title": "UX Writing Hiring Process Video",
+        "type": "video",
+        "summary": "A public video explaining how I evaluate UX writing assignments, hiring-process expectations, and practical content judgment.",
+        "context": "This video shows me explaining how I think about UX writing assignments, candidate evaluation, and the difference between polished writing and practical product judgment. It was published as a LinkedIn post for UX writers navigating hiring processes.",
+        "decisions": [
+          "Spoke directly to the assignment format — the hidden part of most UX writing hiring processes that candidates are rarely prepared for",
+          "Focused on the evaluator's perspective: what actually matters, what looks good on paper but fails in product, and how to show real thinking",
+          "Kept the format conversational and unscripted to model the kind of direct, clear communication the role requires"
+        ],
+        "impact": [
+          "Widely shared among UX writers and hiring managers in the Israeli tech ecosystem",
+          "Used as a reference resource for candidates preparing for UX writing trials and take-home assignments"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/elementor/elementor-ux-writing-hiring-process.mp4",
+            "caption": "UX writing hiring process — LinkedIn video",
+            "poster": "/assets/work-samples/elementor/elementor-ux-writing-hiring-process-poster.png"
+          }
+        ]
+      },
+      {
+        "id": "elementor-ui-copy",
+        "title": "UI Copy Decisions",
+        "type": "ui",
+        "summary": "Annotated copy decisions across the Elementor editor: button labels, error states, empty states, and onboarding strings - including the reasoning behind each choice.",
+        "context": "Elementor's editor is used by millions of WordPress creators. UI strings need to work for beginners and power users simultaneously: simple enough to be immediately clear, precise enough not to mislead experts. That nuance manifests in almost every feature.",
+        "decisions": [
+          "Avoided internal WordPress jargon that most creators don't know, while keeping terms that matter for communicating with developers",
+          "Used active voice everywhere: 'Publish your site' vs. 'Your site is ready to be published'",
+          "Error messages always say what went wrong and provide and actionable next step, never leaving the user at a dead-end"
+        ],
+        "impact": [
+          "Copy patterns adopted as defaults in new feature development",
+          "Reduced UX review rounds for new features after establishing shared standards"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/elementor/elementor-screen-p2.png",
+            "caption": "Hold on tight. Grab a cup of coffee. We're making your WordPress site — setup in progress screen"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-screen-p3.png",
+            "caption": "Ta-da! Your site is ready — new site success state"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-screen-p5.png",
+            "caption": "Let's authenticate your email — account verification prompt"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-screen-p6.png",
+            "caption": "Email authentication flow — step-by-step verification"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-screen-p4.png",
+            "caption": "Websites dashboard — full site management view"
+          }
+        ]
+      },
+      {
+        "id": "elementor-process-governance",
+        "title": "Content Process & Governance",
+        "type": "system",
+        "summary": "Process documentation defining how content design decisions are made, reviewed, and implemented across the Elementor product team from intake to handoff.",
+        "context": "As the first content designer at Elementor, I needed to build the review process on top of the content layer itself. That meant defining when content design gets involved, what a review covers, and how decisions get documented so the team could move fast without losing consistency.",
+        "decisions": [
+          "Framing the peer-review process as a neutral conversation rather than a proofreading hot-seat increased the participation among writers and the implmentation of feedback",
+          "Encouraged institutional workflows that included earlier involvement of writers, producing better copy and fewer last-minute revisions",
+          "Documented decisions in the design file, not a separate doc. Keeping context in the source of truth made it usable during and after handoff"
+        ],
+        "impact": [
+          "Established a repeatable review process that scaled across multiple product teams simultaneously",
+          "Reduced last-minute copy changes in development by moving content review earlier in the design cycle"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/elementor/elementor-content-process-p1.png",
+            "caption": "Content process overview"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-content-process-p2.png",
+            "caption": "Governance model"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-content-process-p3.png",
+            "caption": "It's more than spellcheck ;)"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-content-process-p4.png",
+            "caption": "Contribution guidelines"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-content-process-p5.png",
+            "caption": "Style alignment rules"
+          }
+        ]
+      },
+      {
+        "id": "elementor-content-framework",
+        "title": "Content Design Framework",
+        "type": "system",
+        "summary": "A system of writing standards, component patterns, and tone guidance built to scale content design across the Elementor product suite.",
+        "context": "Elementor had no content design function when I joined. I built the framework from scratch: extracting principles from existing product copy, running design reviews, and documenting patterns that designers and PMs could act on independently, without a content review bottleneck.",
+        "decisions": [
+          "Built the framework around components, not abstract rules, so writers and designers could apply it at the point of work, not retrospectively",
+          "Included real examples from the product alongside each pattern",
+          "Kept the documentation tight enough to fit one pattern on each page. This lean version was actually distributed and implemented at scale"
+        ],
+        "impact": [
+          "Adopted across the product team within one quarter of launch",
+          "Reduced content review cycles by giving designers a reference to work from before handoff"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/elementor/elementor-drill-down-p1.png",
+            "caption": "UX writing drill-down overview"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-drill-down-p2.png",
+            "caption": "Content principles"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-drill-down-p3.png",
+            "caption": "Framework architecture"
+          },
+          {
+            "src": "/assets/work-samples/elementor/elementor-drill-down-p4.png",
+            "caption": "Component content model"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wix",
+    "company": "Wix",
+    "role": "Knowledge Base & UX Writer",
+    "period": "2018 – 2021",
+    "location": "Tel Aviv, Israel",
+    "logo": "/assets/logos/wix.png",
+    "color": "#3D3D6B",
+    "summary": "Moved from technical knowledge-base architecture into UX writing for Merchant, Multilingual, Restaurant and PoS verticals.",
+    "expanded": "Wix was my bridge into the world of writers-in-tech, transitioning from individual clients to coorporate architecture and enterprise-level products: first through knowledge-base systems, then product flows, transactional content, compliance-sensitive UX, and internal training tools.",
+    "wins": [
+      "Owned knowledge-base architecture for Wix Logo Maker and maintained support structures across media products.",
+      "Transitioned into UX writing through Wix's internal UX bootcamp.",
+      "Wrote UI copy, merchant onboarding, transactional emails, and help content for Wix Payments.",
+      "Supported complex merchant flows involving payments, compliance, transactions/payouts, and account states.",
+      "Contributed to Wix Payments from launch into a major revenue product.",
+      "Worked across verticals including Wix Restaurants, Wix Multilingual, and internal products like the Wix Guru training experiences."
+    ],
+    "owned": [
+      "Knowledge-base architecture",
+      "Help content for media products",
+      "Logo Maker",
+      "Wix Payments",
+      "Transactional emails",
+      "Merchant flow content",
+      "Compliance-sensitive states",
+      "Guru"
+    ],
+    "tools": [
+      "Zeplin",
+      "Miro",
+      "Babel",
+      "Answers",
+      "Monday"
+    ],
+    "projects": [
+      {
+        "id": "wix-payments-video",
+        "title": "Wix Payments — Product Walkthrough",
+        "type": "video",
+        "summary": "Official Wix Payments product walkthrough covering the merchant setup and dashboard experience.",
+        "context": "This video was produced as an official Wix Payments explainer. My role included writing the script and reviewing the copy to ensure it matched the UI strings I had authored — creating a consistent experience across product and marketing touchpoints.",
+        "decisions": [
+          "Script language mirrors the in-product copy: 'Accept payments' over 'Enable Wix Payments', 'Your payouts' over 'Settlement funds'",
+          "Flow follows the merchant mental model (setup → dashboard → payouts) rather than the technical order of operations"
+        ],
+        "impact": [
+          "Video became a key asset in the Wix Payments onboarding email sequence",
+          "Supported merchant activation by giving a visual overview before they committed to setup"
+        ],
+        "samples": [
+          {
+            "src": "https://www.youtube.com/embed/CdX3kdcTkl0",
+            "caption": "Wix Payments official product walkthrough"
+          }
+        ]
+      },
+      {
+        "id": "wix-restaurants-video",
+        "title": "Wix Restaurants — Onboarding Walkthrough",
+        "type": "video",
+        "summary": "Wix Restaurants product walkthrough covering menu setup, ordering configuration, and delivery flow for restaurant owners.",
+        "context": "Restaurant owners have high task complexity and low patience for tech jargon. The script for this video was written to walk through setup in the order a real restaurant owner would think about it — not the order the features were built.",
+        "decisions": [
+          "Organized by restaurant owner workflow: menu first, then ordering, then delivery — matching how they'd plan opening a new location",
+          "Used food-service language throughout: 'your menu', 'your orders', 'your tables' — not platform-neutral UI labels"
+        ],
+        "impact": [
+          "Video reduced inbound support contacts for Wix Restaurants setup topics",
+          "Adopted as the primary onboarding reference in the Wix Restaurants help center"
+        ],
+        "samples": [
+          {
+            "src": "https://www.youtube.com/embed/xA9GeZT5KTk?start=10",
+            "caption": "Wix Restaurants onboarding walkthrough (from setup)"
+          }
+        ]
+      },
+      {
+        "id": "wix-logo-maker-kb",
+        "title": "Wix Logo Maker — Knowledge Base",
+        "type": "doc",
+        "summary": "Knowledge base article architecture for Wix Logo Maker, covering the full user journey from creating a logo to downloading and using it across platforms.",
+        "context": "Logo Maker users are often first-time business owners who have never worked with a designer or brand asset before. Knowledge base content needed to bridge that gap — covering both the tool and the concepts behind it without talking down to users.",
+        "decisions": [
+          "Article structure follows user goals, not feature names. 'Download your logo for social media' rather than 'Export options'",
+          "Wrote to a 6th-grade reading level. No design jargon and no assumed knowledge of file formats",
+          "Added contextual next steps at the end of each article to reduce dead-end reads"
+        ],
+        "impact": [
+          "Structured KB architecture reduced duplicate support tickets for covered topics",
+          "Article set became the reference model for Wix's media product documentation standards"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/wix/wix-logo-maker-kb-01.png",
+            "caption": "Wix Logo Maker knowledge base article — support.wix.com"
+          }
+        ]
+      },
+      {
+        "id": "wix-podcast-player-kb",
+        "title": "Wix Podcast Player — Knowledge Base",
+        "type": "doc",
+        "summary": "Knowledge base documentation for the Wix Podcast Player, covering setup, episode management, and distribution configuration for podcasters using Wix.",
+        "context": "The Wix Podcast Player was a newer addition to the Wix media suite with a different user profile than typical site builders — podcasters who had very specific distribution and metadata requirements. Documentation needed to address both the Wix editor context and the podcast ecosystem it connects to.",
+        "decisions": [
+          "Documented RSS and distribution requirements explicitly, since podcasters publishing to Spotify or Apple Podcasts needed to get metadata right before they could go live",
+          "Separated setup (one-time) from episode management (recurring) so repeat users could navigate without re-reading the full setup flow",
+          "Used podcaster-first terminology throughout: 'your episodes', 'your feed', 'your listeners'"
+        ],
+        "impact": [
+          "Documentation enabled self-service for podcast distribution setup, a topic that previously generated high support volume",
+          "Article structure adopted as the template for subsequent Wix media product docs"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/wix/wix-podcast-player-kb-01.png",
+            "caption": "Wix Podcast Player knowledge base article — support.wix.com"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "webetter",
+    "company": "WeBetter",
+    "role": "Campaign Manager",
+    "period": "2017 – 2018",
+    "location": "Israel",
+    "logo": "/assets/logos/better-digital.png",
+    "color": "#2E7D6E",
+    "summary": "Managed PPC, paid social, landing pages, and English-language campaign content for clients bridging Israeli, religious, and global markets.",
+    "expanded": "At WeBetter I learned performance marketing: campaigns, landing pages, paid media, client strategy, and writing for audiences bridging across local, and international contexts.",
+    "wins": [
+      "Managed campaigns across paid search, paid social, content, landing pages, and client websites.",
+      "Supported over a dozen client accounts across businesses, charities, and global brands.",
+      "Helped launch delivery services, events, fundraising campaigns, and brand identities.",
+      "Coordinated content and promotion across local media, international audiences, and paid distribution channels.",
+      "Helped improve campaign KPI metrics and the efficiency of paid-media budgets."
+    ],
+    "owned": [
+      "PPC campaign copy",
+      "Landing page content",
+      "Client communication",
+      "Paid social messaging",
+      "Website content",
+      "Campaign structure",
+      "English-language content quality",
+      "Brand and launch messaging"
+    ],
+    "tools": [
+      "Google Ads",
+      "Facebook Ads Manager",
+      "WordPress",
+      "Adobe",
+      "GANTT",
+      "Asana"
+    ],
+    "projects": [
+      {
+        "id": "webetter-tzfat-charity",
+        "title": "Tzfat Charity Website",
+        "type": "ui",
+        "summary": "Website design and copy for a nonprofit serving the Safed community: site architecture, a donation flow and accompanying transactional emails.",
+        "context": "The organization needed copy that communicated impact and urgency without feeling manipulative. The audience includes donors, community members, and grant reviewers: three different readers with three different needs from the same page.",
+        "decisions": [
+          "Mission statement leads with the community served, not the organization itself",
+          "Programs copy uses concrete numbers and outcomes, not vague buzzwords",
+          "The donation CTA is direct without being aggressive. Leveraging emotional weight without tacky pressure"
+        ],
+        "impact": [
+          "Copy launched with the site redesign",
+          "Client reported increased donor engagement in the first fundraising cycle after launch"
+        ],
+        "samples": [
+          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-01-homepage.png", "caption": "Homepage introducing the mission and primary donation path" },
+          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-02-how-we-help.png", "caption": "\"How We Help\" programs overview with six program areas" },
+          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-03-story-article.png", "caption": "Long-form story article with donor-facing campaign messaging" },
+          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-04-donation-checkout.png", "caption": "Donation checkout — final conversion step in the campaign flow" }
+        ]
+      },
+      {
+        "id": "webetter-jerusalem-delights",
+        "title": "Jerusalem Delights Website",
+        "type": "ui",
+        "summary": "Full website copy for a food tourism brand: homepage, about section, and program pages as well as a full ordering and payments system. Written to convert first-time visitors into recurring bookings.",
+        "context": "Jerusalem Delights targets international tourists planning a visit to Jerusalem. The brand needed to feel local and authentic while being immediately accessible to English speakers with no prior knowledge of the city or its food culture.",
+        "decisions": [
+          "Led with sensory and story language in headlines before moving to logistics and booking details",
+          "Kept navigation labels extremely literal. We assumed tourists scan, not read",
+          "About section uses first person throughout to build trust with an unknown audience"
+        ],
+        "impact": [
+          "Copy shipped with the initial launch and remained unchanged through the first year",
+          "Succesfully opened up new markets and repeating revenue streams"
+        ],
+        "samples": [
+          { "src": "/assets/work-samples/webetter/webetter-jerusalem-delights-01-about.png", "caption": "About Us page introducing the catering brand, differentiators, and service areas" },
+          { "src": "/assets/work-samples/webetter/webetter-jerusalem-delights-02-about-continued.png", "caption": "About Us continued — customer testimonials and call to action" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shalva",
+    "company": "Shalva National Center",
+    "role": "Marketing & Grant Writer",
+    "period": "2015 – 2017",
+    "location": "Jerusalem, Israel",
+    "logo": "/assets/logos/Shalva.png",
+    "color": "#8B5A2B",
+    "summary": "Wrote grants, campaigns, speeches, presentations, and web content for a national disability nonprofit, helping secure over $54M in funding.",
+    "expanded": "Shalva was where I first became a full-spectrum institutional writer: grants, donor communications, brand language, web content, speeches, presentations, and campaigns.",
+    "wins": [
+      "Helped secure over $54M in funding for building development, new programs, and ongoing donor-supported work.",
+      "Drafted grant requests and balanced budgets for foundations, private donors, and institutional partners.",
+      "Contributed to UN-facing presentations and international inclusion efforts.",
+      "Helped shape the organization's brand language, including the slogan still being used today.",
+      "Wrote across brochures, campaigns, speeches, donor letters, and website content."
+    ],
+    "owned": [
+      "Grant drafts and donor-facing proposals",
+      "Budget justification language",
+      "Donor communications",
+      "Website and campaign copy",
+      "Presentations and ghostwriting",
+      "Brochures and promotional materials",
+      "Brand voice development"
+    ],
+    "tools": [
+      "Microsoft Office",
+      "Salesforce",
+      "WordPress"
+    ],
+    "projects": [
+      {
+        "id": "shalva-website",
+        "title": "Shalva Website Copy",
+        "type": "doc",
+        "summary": "Homepage and key copy sections for Shalva National Center: Israel's leading organization serving children with disabilities and their families.",
+        "context": "Shalva's audience includes donors, families seeking services, and international supporters. The copy needed to be warm and human without sentimentalizing disability. It had to communicate the scale and professionalism of the organization while preserving the personal connection that drives donations and trust.",
+        "decisions": [
+          "Used family-first language throughout: i.e., 'children and their families' not just 'children with disabilities'",
+          "Mission copy focuses on what Shalva enables, not what it provides: what families can do because of Shalva, not what Shalva does for them",
+          "International-facing pages use a neutral, accessible tone. The organization is deeply rooted in Israel but donors come from everywhere"
+        ],
+        "impact": [
+          "Copy adopted across the full web redesign",
+          "Contributed to a successful fundraising campaign cycle in the first year after launch"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/shalva/shalva-about-mission.png",
+            "caption": "About Shalva — mission, values, and organizational overview"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-programs.png",
+            "caption": "Programs for Children, Adults & Families — full lifecycle care"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-band.png",
+            "caption": "The Shalva Band — music program celebrating inclusion"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-global-impact.png",
+            "caption": "Global Impact — leading inclusion and inspiring change worldwide"
+          }
+        ]
+      },
+      {
+        "id": "shalva-un",
+        "title": "UN Presentation",
+        "type": "doc",
+        "summary": "Institutional presentation developed for a United Nations audience, making the case for Shalva's model of disability inclusion, program scope, and societal impact.",
+        "context": "The UN audience required a different register than donor communications: more policy-minded, evidence-led, and structured around international human rights frameworks rather than emotional appeal. The presentation needed to show that Shalva's programs meet international inclusion standards while remaining grounded in the organization's specific context.",
+        "decisions": [
+          "Led with vision and mission before introducing organizational detail — policy audiences want the framework first",
+          "Framed programs as implementations of inclusion rights, not charity services",
+          "Impact section quantified societal outcomes, not just individual beneficiaries"
+        ],
+        "impact": [
+          "Contributed to Shalva's international advocacy and recognition at the UN level"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/shalva/shalva-un-p1.png",
+            "caption": "Cover — Presentation to the United Nations"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-un-p2.png",
+            "caption": "About Shalva — vision, mission, and organizational history"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-un-p3.png",
+            "caption": "Results framework — goals across education, employment, and inclusion"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-un-p4.png",
+            "caption": "Means of implementation — early intervention through Shalva Idol"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-un-p5.png",
+            "caption": "Means of implementation — Shalva Band, VR simulation, vocational training"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-un-p6.png",
+            "caption": "Impact — children, families, and a more inclusive Israeli society"
+          }
+        ]
+      },
+      {
+        "id": "shalva-inclusion",
+        "title": "National Park for Inclusion — Proposal",
+        "type": "doc",
+        "summary": "Grant proposal for Shalva's flagship inclusion initiative: a fully accessible national park designed to serve children and adults with disabilities alongside the broader public.",
+        "context": "This proposal made the case to funders and city officials that an inclusive park was both a civic landmark and a concrete expression of Shalva's care model. The writing had to translate architectural ambition and inclusion principles into a clear funding ask — with program rationale, beneficiary framing, and a detailed equipment budget.",
+        "decisions": [
+          "Opened with a parent testimonial to anchor the civic argument in a personal story before presenting the organizational case",
+          "Framed inclusion as a design principle, not an accommodation — the park serves everyone, not only people with disabilities",
+          "Budget section itemized specific accessible equipment to give funders tangible cost targets"
+        ],
+        "impact": [
+          "Supported the funding campaign for Shalva's National Park for Inclusion at its Jerusalem campus"
+        ],
+        "samples": [
+          {
+            "src": "/assets/work-samples/shalva/shalva-inclusion-p1.png",
+            "caption": "Cover — SHALVA National Park for Inclusion proposal"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-inclusion-p2.png",
+            "caption": "Parent testimonial and organizational overview"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-inclusion-p3.png",
+            "caption": "Executive summary and statement of need"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-inclusion-p4.png",
+            "caption": "Project description and beneficiaries"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-inclusion-p5.png",
+            "caption": "Funding request and equipment budget"
+          },
+          {
+            "src": "/assets/work-samples/shalva/shalva-inclusion-p6.png",
+            "caption": "Closing slide"
+          }
+        ]
+      }
+    ]
+  }
+]

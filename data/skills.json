@@ -1,0 +1,53 @@
+{
+  "core": [
+    "Microcopy",
+    "UX",
+    "Localization",
+    "User Research",
+    "Prompt Engineering",
+    "Content Systems",
+    "Evaluations",
+    "Conversation Design",
+    "Agentic Workflows"
+  ],
+  "tools": [
+    "Figma",
+    "Notion",
+    "Jira",
+    "Confluence",
+    "VS Code",
+    "Miro"
+  ],
+  "adjacent": [
+    "Accessibility",
+    "Workshop Facilitation",
+    "Information Architecture",
+    "Editorial Strategy"
+  ],
+  "strengths": [
+    {
+      "id": "writing",
+      "icon": "pen",
+      "label": "Writing & Microcopy",
+      "description": "Combining user state-of-mind with product contraints to write excepltional content."
+    },
+    {
+      "id": "systems",
+      "icon": "layers",
+      "label": "Content Systems",
+      "description": "Scalable governance, style guides, and documentation that teams actually use."
+    },
+    {
+      "id": "ai",
+      "icon": "zap",
+      "label": "AI & Conversation",
+      "description": "Prompt engineering, eval protocols, and agentic workflow design."
+    },
+    {
+      "id": "research",
+      "icon": "shield",
+      "label": "Research & Audits",
+      "description": "Heuristic reviews, user interviews, and competitive analysis that ground the work."
+    }
+  ]
+}

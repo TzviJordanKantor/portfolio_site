@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw source asset folders (not referenced in code, not needed for deployment)
+portfolio assets 2nd pass/
+public/assets/Portfolio Wesbite Assets/
+
+# Claude Code internals
+.claude/
+
+# scratch/audit documents (development artifacts, not part of the site)
+ASSET_AUDIT.md
+CONTENT_STRING_REVIEW.csv
+CONTENT_STRING_REVIEW_README.md
+CONTENT_STRING_INVENTORY_FOR_HUMAN_REVIEW.md
+docs/

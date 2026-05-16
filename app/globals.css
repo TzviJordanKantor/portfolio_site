@@ -1,26 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Young+Serif&display=swap');
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY TOKENS
+   Young Serif  → display/title moments only
+   Outfit       → everything else (sitewide default)
+   ───────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-display: 'Young Serif', Georgia, serif;
+  --font-sans: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-family-sans: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Young Serif', Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reusable display-font utility (for Tailwind className="font-display") */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* ── Spacing ───────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  40px;
+  --space-8:  56px;
+
+  /* ── Shell geometry ────────────────────── */
+  --shell-pad:   24px;   /* outer site-shell padding (overridden at breakpoints) */
+  --hero-height: 300px;  /* locked height for contact card + identity hero band */
+
+  /* ── Radius ────────────────────────────── */
+  --radius-sm:  12px;
+  --radius-md:  18px;
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+  --radius-2xl: 40px;
+  --radius:     24px;
+
+  /* ── Viewport / chrome ─────────────────── */
+  --viewport-bg: #C8D9CB;
+
+  /* ── Sidebar ───────────────────────────── */
+  --sidebar-bg:      #E3EBE5;
+  --sidebar-card-bg: #FFFFFF;
+  --sidebar-text:    #1E2D21;
+  --sidebar-muted:   #5E7262;
+  --sidebar-border:  rgba(0,0,0,0.09);
+
+  /* ── Accent / purple ───────────────────── */
+  --accent:        #7A6BAF;
+  --accent-light:  #EDEAF6;
+  --accent-hover:  #6455A0;
+  --accent-border: rgba(122,107,175,0.22);
+
+  /* ── Surfaces ──────────────────────────── */
+  --body-bg:     #FAFBFA;
+  --card-bg:     #FFFFFF;
+  --card-bg-alt: #EFF4F0;
+  --chart-bg:    #EEF3EF;
+
+  /* ── Text ──────────────────────────────── */
+  --text-primary:   #1A2B1C;
+  --text-secondary: #4B5E4D;
+  --text-muted:     #7B8E7D;
+
+  /* ── Borders ───────────────────────────── */
+  --border: #D2DDD4;
+
+  /* ── Shadows ───────────────────────────── */
+  --shadow-soft:    0 2px 8px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
+  --shadow-card:    0 1px 3px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-hover:   0 8px 24px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-page:    0 4px 40px rgba(0,0,0,0.14), 0 1px 8px rgba(0,0,0,0.06);
+  --shadow-contact: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card-hover: var(--shadow-hover);
+  --shadow-edu:        var(--shadow-soft);
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESET
+   ───────────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;   /* prevent browser body scroll on desktop */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow: hidden;   /* all scrolling happens inside the shell */
+  background: var(--viewport-bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+::selection    { background: var(--accent-light); color: var(--accent); }
+
+/* ─────────────────────────────────────────────────────────
+   LAYOUT SHELL — SPLIT-PANE SCROLL
+   The outer rounded frame never moves. Each column scrolls
+   independently inside its own track.
+   ───────────────────────────────────────────────────────── */
+.site-shell {
+  height: 100vh;
+  overflow: hidden;
+  background: var(--viewport-bg);
+  padding: var(--shell-pad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-shell {
+  width: 100%;
+  max-width: 1500px;
+  /* Height fills viewport minus top+bottom padding */
+  height: calc(100vh - 2 * var(--shell-pad));
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  border-radius: var(--radius-2xl);
+  /* overflow:clip preserves border-radius without blocking sticky */
+  overflow: clip;
+  box-shadow: var(--shadow-page);
+  align-items: stretch;
+}
+
+/* Left column — static, no scroll */
+.resume-shell > aside {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Right column — thin system scrollbar */
+.resume-shell > main {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.resume-shell > main::-webkit-scrollbar       { width: 4px; }
+.resume-shell > main::-webkit-scrollbar-track { background: transparent; }
+.resume-shell > main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Carousel rail — hide scrollbar cross-browser */
+.carousel-rail::-webkit-scrollbar { display: none; }
+
+/* ─────────────────────────────────────────────────────────
+   SKILL PILLS
+   Hover states defined here; component applies the classes.
+   ───────────────────────────────────────────────────────── */
+.pill-base {
+  font-size: 0.625rem;
+  font-weight: 500;
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+  cursor: default;
+  display: inline-block;
+  line-height: 1.3;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.pill-neutral {
+  background: rgba(255,255,255,0.75);
+  color: var(--text-secondary);
+  border: 1px solid var(--sidebar-border);
+}
+.pill-neutral:hover {
+  background: rgba(255,255,255,0.98);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-soft);
+}
+
+.pill-ai {
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+.pill-ai:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────── */
+
+/* Tablet — revert to page scroll, single column */
+@media (max-width: 860px) {
+  :root { --shell-pad: 12px; }
+
+  html, body {
+    height: auto;
+    overflow: visible;
+  }
+  .site-shell {
+    height: auto;
+    overflow: visible;
+    align-items: flex-start;
+  }
+  .resume-shell {
+    height: auto;
+    grid-template-columns: 1fr;
+    border-radius: var(--radius-xl);
+    overflow: clip;
+  }
+  .resume-shell > aside,
+  .resume-shell > main {
+    height: auto;
+    overflow-y: visible;
+  }
+}
+
+/* Mobile — full bleed */
+@media (max-width: 480px) {
+  :root { --shell-pad: 0px; }
+
+  .site-shell   { padding: 0; }
+  .resume-shell { border-radius: 0; box-shadow: none; }
 }
