@@ -209,6 +209,7 @@ body {
     height: auto;
     overflow: visible;
   }
+  body { overflow-x: hidden; }
   .site-shell {
     height: auto;
     overflow: visible;
@@ -216,14 +217,22 @@ body {
   }
   .resume-shell {
     height: auto;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     border-radius: var(--radius-xl);
     overflow: clip;
   }
-  .resume-shell > aside,
+  .resume-shell > aside {
+    height: auto;
+    overflow-y: visible;
+    display: none;
+  }
   .resume-shell > main {
     height: auto;
     overflow-y: visible;
+  }
+  .experience-drawer-panel {
+    width: 92vw !important;
+    min-width: 0 !important;
   }
 }
 
