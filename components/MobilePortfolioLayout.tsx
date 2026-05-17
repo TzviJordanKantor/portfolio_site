@@ -573,6 +573,7 @@ export default function MobilePortfolioLayout() {
               index={i}
               onClick={setSelectedExp}
               showMobileAffordance
+              noWhileInView
             />
           ))}
         </section>

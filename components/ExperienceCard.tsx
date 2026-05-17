@@ -10,14 +10,18 @@ interface ExperienceCardProps {
   index: number;
   onClick: (exp: Experience) => void;
   showMobileAffordance?: boolean;
+  noWhileInView?: boolean;
 }
 
-export default function ExperienceCard({ experience, index, onClick, showMobileAffordance }: ExperienceCardProps) {
+export default function ExperienceCard({ experience, index, onClick, showMobileAffordance, noWhileInView }: ExperienceCardProps) {
+  const viewportProps = noWhileInView
+    ? { animate: { opacity: 1, y: 0 } }
+    : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" } };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      {...viewportProps}
       transition={{ duration: 0.4, delay: index * 0.06 }}
       whileHover={{
         y: -4,
