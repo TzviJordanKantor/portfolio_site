@@ -541,10 +541,16 @@ export default function MobilePortfolioLayout() {
             position: "sticky",
             top: 0,
             zIndex: 5,
-            background: "rgba(239,244,240,0.90)",
-            backdropFilter: "blur(8px)",
-            borderBottom: "1px solid rgba(0,0,0,0.07)",
-            padding: "var(--space-3) 60px var(--space-2) 0",
+            background: "rgba(239,244,240,0.94)",
+            backdropFilter: "blur(10px)",
+            borderBottom: "1px solid rgba(0,0,0,0.10)",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+            marginLeft: "calc(-1 * var(--space-3))",
+            marginRight: "calc(-1 * var(--space-3))",
+            paddingTop: "var(--space-3)",
+            paddingBottom: "var(--space-2)",
+            paddingLeft: "var(--space-3)",
+            paddingRight: 72,
           }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
               <span style={{
@@ -577,7 +583,7 @@ export default function MobilePortfolioLayout() {
             <span style={SECTION_LABEL}>Get in Touch</span>
 
             {/* Business-card row: contact left, portrait right */}
-            <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-4)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-4)" }}>
 
               {/* Left: contact rows */}
               <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
@@ -621,19 +627,28 @@ export default function MobilePortfolioLayout() {
                 </a>
               </div>
 
-              {/* Right: portrait — decorative, not clickable */}
+              {/* Right: portrait zone — decorative, not clickable */}
               <div
                 style={{
-                  width: 72, height: 72,
+                  flexShrink: 0,
+                  width: "clamp(96px, 28vw, 132px)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                aria-hidden="true"
+              >
+                <div style={{
+                  width: "clamp(82px, 22vw, 108px)",
+                  height: "clamp(82px, 22vw, 108px)",
                   borderRadius: "50%",
                   overflow: "hidden",
                   position: "relative",
                   border: "2px solid var(--border)",
                   flexShrink: 0,
-                }}
-                aria-hidden="true"
-              >
-                <Image src={profile.headshot} alt="" fill className="object-cover" sizes="72px" />
+                }}>
+                  <Image src={profile.headshot} alt="" fill className="object-cover" sizes="108px" />
+                </div>
               </div>
             </div>
           </div>
