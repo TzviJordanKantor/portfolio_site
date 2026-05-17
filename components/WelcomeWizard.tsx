@@ -9,7 +9,7 @@ export const WELCOME_STORAGE_KEY = "portfolio_welcomed_v1";
 
 const TOTAL = 3;
 
-const STEPS = [
+export const STEPS = [
   {
     heading: "About me",
     body: [

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-const SEGMENTS = [
+export const SEGMENTS = [
   {
     label: "Writing",
     pct: 35,

@@ -9,6 +9,8 @@ import ExperienceCard from "@/components/ExperienceCard";
 import ExperienceModal from "@/components/ExperienceModal";
 import FocusModal from "@/components/FocusModal";
 import WelcomeWizard, { WELCOME_STORAGE_KEY } from "@/components/WelcomeWizard";
+import MobilePortfolioLayout from "@/components/MobilePortfolioLayout";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import experienceData from "@/data/experience.json";
 import profile from "@/data/profile.json";
 import type { Experience } from "@/types";
@@ -24,6 +26,7 @@ const FOCUS_LEGEND = [
 const experiences = experienceData as Experience[];
 
 export default function Home() {
+  const isMobile = useIsMobile();
   const [selectedExp, setSelectedExp] = useState<Experience | null>(null);
   const [focusOpen, setFocusOpen] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
@@ -63,6 +66,8 @@ export default function Home() {
     localStorage.setItem(WELCOME_STORAGE_KEY, "1");
     setWizardOpen(false);
   };
+
+  if (isMobile) return <MobilePortfolioLayout />;
 
   return (
     <div className="site-shell">

@@ -110,7 +110,7 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="fixed right-0 top-0 bottom-0 z-50 overflow-y-auto"
+              className="experience-drawer-panel fixed right-0 top-0 bottom-0 z-50 overflow-y-auto"
               style={{
                 width: "min(560px, 44vw)",
                 maxWidth: "94vw",
