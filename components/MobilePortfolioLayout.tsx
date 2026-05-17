@@ -25,7 +25,7 @@ const AI_SKILLS = new Set([
 
 const SKILL_TOOLTIPS: Record<string, string> = {
   "Microcopy": "Button labels, errors, and empty states. Words at the UI layer.",
-  "UX": "End-to-end product content across flows and surfaces.",
+  "UX": "I understand how structure, flow, timing, hierarchy, and language shape the user experience.",
   "Localization": "Multi-language content architecture and copy reviews.",
   "User Research": "Interviews, heuristic audits, and usability analysis.",
   "Prompt Engineering": "LLM instruction design, chain-of-thought, and output optimization.",
@@ -33,6 +33,17 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Evaluations": "AI output quality rubrics and structured eval protocols.",
   "Conversation Design": "Chat and voice flow architecture for AI products.",
   "Agentic Workflows": "Autonomous AI pipeline design and orchestration.",
+  "Accessibility": "I write and structure interface content so more people can understand, navigate, and recover from mistakes.",
+  "Workshop Facilitation": "I lead working sessions, guilds, and presentations that help teams align around better product language.",
+  "Information Architecture": "I organize product and content structures so people can find, understand, and act on information.",
+  "Editorial Strategy": "I shape messaging systems, content priorities, and review standards so teams can make better writing decisions.",
+  "Branding": "I connect product language to a broader voice so the experience feels consistent across surfaces.",
+  "Figma": "I use Figma to write, test, and review product copy in context.",
+  "Notion": "I use Notion to organize research, content systems, and working documentation.",
+  "Jira": "I use Jira to track UX writing work across product and engineering workflows.",
+  "Confluence": "I use Confluence to document standards, decisions, and reusable guidance.",
+  "Miro": "I use Miro to map flows, facilitate workshops, and structure early thinking.",
+  "Claude / Claude Code": "I use Claude and Claude Code to structure content systems, build workflows, and ship working interface prototypes.",
 };
 
 const NAV_SECTIONS = [
@@ -400,22 +411,46 @@ export default function MobilePortfolioLayout() {
               )}
             </AnimatePresence>
 
-            {/* Tools */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-              <span style={GROUP_LABEL}>Tools</span>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
-                {skillsData.tools.map(skill => (
-                  <span key={skill} className="pill-base pill-neutral">{skill}</span>
-                ))}
-              </div>
-            </div>
-
             {/* Adjacent */}
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
               <span style={GROUP_LABEL}>Adjacent</span>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
                 {skillsData.adjacent.map(skill => (
-                  <span key={skill} className="pill-base pill-neutral">{skill}</span>
+                  <button
+                    key={skill}
+                    onClick={() => setActiveSkill(activeSkill === skill ? null : skill)}
+                    className="pill-base pill-neutral"
+                    style={{
+                      cursor: "pointer",
+                      ...(activeSkill === skill
+                        ? { outline: "2px solid var(--accent)", outlineOffset: "2px" }
+                        : {}),
+                    }}
+                  >
+                    {skill}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+              <span style={GROUP_LABEL}>Tools</span>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+                {skillsData.tools.map(skill => (
+                  <button
+                    key={skill}
+                    onClick={() => setActiveSkill(activeSkill === skill ? null : skill)}
+                    className="pill-base pill-neutral"
+                    style={{
+                      cursor: "pointer",
+                      ...(activeSkill === skill
+                        ? { outline: "2px solid var(--accent)", outlineOffset: "2px" }
+                        : {}),
+                    }}
+                  >
+                    {skill}
+                  </button>
                 ))}
               </div>
             </div>
@@ -502,11 +537,19 @@ export default function MobilePortfolioLayout() {
 
         {/* ── Experience ─────────────────────────────────── */}
         <section id="experience" style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-            <span style={SECTION_LABEL}>Professional Experience</span>
-            <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
-              Tap any role to explore impact, ownership, and work samples.
-            </p>
+          <div style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 5,
+            background: "var(--viewport-bg)",
+            padding: "var(--space-3) 0 var(--space-2)",
+          }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
+              <span style={SECTION_LABEL}>Professional Experience</span>
+              <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
+                Tap any role to explore impact, ownership, and work samples.
+              </p>
+            </div>
           </div>
           {experiences.map((exp, i) => (
             <ExperienceCard
@@ -514,6 +557,7 @@ export default function MobilePortfolioLayout() {
               experience={exp}
               index={i}
               onClick={setSelectedExp}
+              showMobileAffordance
             />
           ))}
         </section>
@@ -522,6 +566,24 @@ export default function MobilePortfolioLayout() {
         <section id="contact" style={CARD}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <span style={SECTION_LABEL}>Get in Touch</span>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{
+                width: 80,
+                height: 80,
+                borderRadius: "50%",
+                overflow: "hidden",
+                position: "relative",
+                border: "2px solid var(--border)",
+              }}>
+                <Image
+                  src={profile.headshot}
+                  alt={profile.name}
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+              </div>
+            </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
               <a
                 href={`mailto:${profile.email}`}
@@ -579,13 +641,17 @@ export default function MobilePortfolioLayout() {
               borderRadius: "var(--radius-sm)",
               background: "var(--card-bg)",
               border: "1px solid var(--border)",
-              color: "var(--text-secondary)",
-              fontSize: "0.875rem", fontWeight: 500,
+              color: "var(--text-muted)",
+              fontSize: "0.5625rem",
+              fontWeight: 700,
+              fontFamily: "var(--font-display)",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
               cursor: "pointer",
               boxShadow: "var(--shadow-card)",
             }}
           >
-            <ChevronUp size={14} />
+            <ChevronUp size={12} />
             Back to top
           </button>
         </div>

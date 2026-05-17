@@ -9,9 +9,10 @@ interface ExperienceCardProps {
   experience: Experience;
   index: number;
   onClick: (exp: Experience) => void;
+  showMobileAffordance?: boolean;
 }
 
-export default function ExperienceCard({ experience, index, onClick }: ExperienceCardProps) {
+export default function ExperienceCard({ experience, index, onClick, showMobileAffordance }: ExperienceCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 14 }}
@@ -109,8 +110,8 @@ export default function ExperienceCard({ experience, index, onClick }: Experienc
               {experience.period}
             </span>
             <span
-              className="opacity-0 group-hover:opacity-50 transition-opacity"
-              style={{ color: "var(--text-muted)", display: "flex" }}
+              className={showMobileAffordance ? undefined : "opacity-0 group-hover:opacity-50 transition-opacity"}
+              style={{ color: "var(--text-muted)", display: "flex", opacity: showMobileAffordance ? 0.5 : undefined }}
             >
               <ArrowUpRight size={14} />
             </span>
