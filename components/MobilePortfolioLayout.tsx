@@ -541,11 +541,20 @@ export default function MobilePortfolioLayout() {
             position: "sticky",
             top: 0,
             zIndex: 5,
-            background: "var(--viewport-bg)",
-            padding: "var(--space-3) 0 var(--space-2)",
+            background: "rgba(239,244,240,0.90)",
+            backdropFilter: "blur(8px)",
+            borderBottom: "1px solid rgba(0,0,0,0.07)",
+            padding: "var(--space-3) 60px var(--space-2) 0",
           }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
-              <span style={SECTION_LABEL}>Professional Experience</span>
+              <span style={{
+                fontSize: "0.8125rem",
+                fontWeight: 700,
+                textTransform: "uppercase" as const,
+                letterSpacing: "0.1em",
+                fontFamily: "var(--font-display)",
+                color: "var(--text-secondary)",
+              }}>Professional Experience</span>
               <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
                 Tap any role to explore impact, ownership, and work samples.
               </p>
@@ -566,60 +575,66 @@ export default function MobilePortfolioLayout() {
         <section id="contact" style={CARD}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <span style={SECTION_LABEL}>Get in Touch</span>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{
-                width: 80,
-                height: 80,
-                borderRadius: "50%",
-                overflow: "hidden",
-                position: "relative",
-                border: "2px solid var(--border)",
-              }}>
-                <Image
-                  src={profile.headshot}
-                  alt={profile.name}
-                  fill
-                  className="object-cover"
-                  sizes="80px"
-                />
-              </div>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-              <a
-                href={`mailto:${profile.email}`}
-                style={{
-                  display: "flex", alignItems: "center", gap: "var(--space-3)",
-                  color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem",
-                }}
-              >
-                <Mail size={16} color="var(--accent)" />
-                {profile.email}
-              </a>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-3)" }}>
-                <Phone size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  <a href={`tel:${profile.phone}`} style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem" }}>
-                    {profile.phone} <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>US</span>
-                  </a>
-                  {profile.phone_il && (
-                    <a href={`tel:${profile.phone_il}`} style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem" }}>
-                      {profile.phone_il} <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>IL</span>
+
+            {/* Business-card row: contact left, portrait right */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-4)" }}>
+
+              {/* Left: contact rows */}
+              <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+                <a
+                  href={`mailto:${profile.email}`}
+                  style={{
+                    display: "flex", alignItems: "center", gap: "var(--space-3)",
+                    color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem",
+                    minWidth: 0,
+                  }}
+                >
+                  <Mail size={16} color="var(--accent)" style={{ flexShrink: 0 }} />
+                  <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {profile.email}
+                  </span>
+                </a>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-3)" }}>
+                  <Phone size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: 2 }} />
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <a href={`tel:${profile.phone}`} style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem" }}>
+                      {profile.phone} <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>US</span>
                     </a>
-                  )}
+                    {profile.phone_il && (
+                      <a href={`tel:${profile.phone_il}`} style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem" }}>
+                        {profile.phone_il} <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>IL</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex", alignItems: "center", gap: "var(--space-3)",
+                    color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem",
+                  }}
+                >
+                  <ExternalLink size={16} color="var(--accent)" />
+                  LinkedIn
+                </a>
               </div>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
+
+              {/* Right: portrait — decorative, not clickable */}
+              <div
                 style={{
-                  display: "flex", alignItems: "center", gap: "var(--space-3)",
-                  color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem",
+                  width: 72, height: 72,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  position: "relative",
+                  border: "2px solid var(--border)",
+                  flexShrink: 0,
                 }}
+                aria-hidden="true"
               >
-                <ExternalLink size={16} color="var(--accent)" />
-                LinkedIn
-              </a>
+                <Image src={profile.headshot} alt="" fill className="object-cover" sizes="72px" />
+              </div>
             </div>
           </div>
         </section>
