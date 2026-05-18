@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, X, Menu, ChevronUp, Mail, Phone, ExternalLink } from "lucide-react";
+import { X, Menu, ChevronUp, ChevronLeft, ChevronRight, ArrowUpRight, Mail, Phone, ExternalLink } from "lucide-react";
 import ExperienceCard from "@/components/ExperienceCard";
 import ExperienceModal from "@/components/ExperienceModal";
 import { STEPS } from "@/components/WelcomeWizard";
@@ -82,6 +82,16 @@ const GROUP_LABEL: CSSProperties = {
 
 const experiences = experienceData as Experience[];
 
+const SKILL_DEF_BLOCK: CSSProperties = {
+  background: "var(--accent-light)",
+  borderRadius: "var(--radius-sm)",
+  padding: "var(--space-3) var(--space-4)",
+  border: "1px solid var(--accent-border)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-1)",
+};
+
 export default function MobilePortfolioLayout() {
   const [carouselStep, setCarouselStep] = useState(0);
   const [carouselDir, setCarouselDir] = useState<1 | -1>(1);
@@ -91,14 +101,25 @@ export default function MobilePortfolioLayout() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const touchStartX = useRef<number>(0);
 
-  const carouselNext = useCallback(() => {
+  const hasOpenOverlay = Boolean(selectedExp || focusOpen);
+
+  // Auto-rotate: resets whenever carouselStep changes (manual or auto)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCarouselDir(1);
+      setCarouselStep(s => (s + 1) % STEPS.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [carouselStep]);
+
+  const handleManualNext = useCallback(() => {
     if (carouselStep < STEPS.length - 1) {
       setCarouselDir(1);
       setCarouselStep(s => s + 1);
     }
   }, [carouselStep]);
 
-  const carouselBack = useCallback(() => {
+  const handleManualBack = useCallback(() => {
     if (carouselStep > 0) {
       setCarouselDir(-1);
       setCarouselStep(s => s - 1);
@@ -111,8 +132,8 @@ export default function MobilePortfolioLayout() {
 
   const onTouchEnd = (e: React.TouchEvent) => {
     const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (diff > 50) carouselNext();
-    else if (diff < -50) carouselBack();
+    if (diff > 50) handleManualNext();
+    else if (diff < -50) handleManualBack();
   };
 
   const scrollToSection = (id: string) => {
@@ -132,73 +153,77 @@ export default function MobilePortfolioLayout() {
     <div style={{ background: "var(--viewport-bg)", minHeight: "100vh", paddingTop: 64 }}>
 
       {/* ── Hamburger ─────────────────────────────────────── */}
-      <div style={{ position: "fixed", top: 16, right: 16, zIndex: 200 }}>
-        <button
-          onClick={() => setHamburgerOpen(o => !o)}
-          style={{
-            width: 40, height: 40,
-            borderRadius: "50%",
-            background: "var(--card-bg)",
-            border: "1px solid var(--border)",
-            boxShadow: "var(--shadow-card)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            cursor: "pointer", color: "var(--text-secondary)",
-          }}
-          aria-label={hamburgerOpen ? "Close menu" : "Open menu"}
-        >
-          {hamburgerOpen ? <X size={16} /> : <Menu size={16} />}
-        </button>
-
-        <AnimatePresence>
-          {hamburgerOpen && (
-            <motion.nav
-              initial={{ opacity: 0, scale: 0.95, y: -8 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -8 }}
-              transition={{ duration: 0.15 }}
+      {!hasOpenOverlay && (
+        <>
+          <div style={{ position: "fixed", top: 16, right: 16, zIndex: 200 }}>
+            <button
+              onClick={() => setHamburgerOpen(o => !o)}
               style={{
-                position: "absolute", top: 48, right: 0,
+                width: 40, height: 40,
+                borderRadius: "50%",
                 background: "var(--card-bg)",
-                borderRadius: "var(--radius-md)",
-                boxShadow: "var(--shadow-page)",
-                padding: "var(--space-2)",
-                minWidth: 160,
-                zIndex: 201,
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-card)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                cursor: "pointer", color: "var(--text-secondary)",
               }}
+              aria-label={hamburgerOpen ? "Close menu" : "Open menu"}
             >
-              {NAV_SECTIONS.map(s => (
-                <button
-                  key={s.id}
-                  onClick={() => scrollToSection(s.id)}
+              {hamburgerOpen ? <X size={16} /> : <Menu size={16} />}
+            </button>
+
+            <AnimatePresence>
+              {hamburgerOpen && (
+                <motion.nav
+                  initial={{ opacity: 0, scale: 0.95, y: -8 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -8 }}
+                  transition={{ duration: 0.15 }}
                   style={{
-                    display: "block", width: "100%", textAlign: "left",
-                    padding: "10px var(--space-4)",
-                    background: "none", border: "none",
-                    borderRadius: "var(--radius-sm)",
-                    fontSize: "0.875rem", fontWeight: 500,
-                    color: "var(--text-primary)",
-                    cursor: "pointer",
+                    position: "absolute", top: 48, right: 0,
+                    background: "var(--card-bg)",
+                    borderRadius: "var(--radius-md)",
+                    boxShadow: "var(--shadow-page)",
+                    padding: "var(--space-2)",
+                    minWidth: 160,
+                    zIndex: 201,
                   }}
                 >
-                  {s.label}
-                </button>
-              ))}
-            </motion.nav>
-          )}
-        </AnimatePresence>
-      </div>
+                  {NAV_SECTIONS.map(s => (
+                    <button
+                      key={s.id}
+                      onClick={() => scrollToSection(s.id)}
+                      style={{
+                        display: "block", width: "100%", textAlign: "left",
+                        padding: "10px var(--space-4)",
+                        background: "none", border: "none",
+                        borderRadius: "var(--radius-sm)",
+                        fontSize: "0.875rem", fontWeight: 500,
+                        color: "var(--text-primary)",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </motion.nav>
+              )}
+            </AnimatePresence>
+          </div>
 
-      {/* Hamburger backdrop */}
-      <AnimatePresence>
-        {hamburgerOpen && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={() => setHamburgerOpen(false)}
-            style={{ position: "fixed", inset: 0, zIndex: 199 }}
-            aria-hidden="true"
-          />
-        )}
-      </AnimatePresence>
+          {/* Hamburger backdrop */}
+          <AnimatePresence>
+            {hamburgerOpen && (
+              <motion.div
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                onClick={() => setHamburgerOpen(false)}
+                style={{ position: "fixed", inset: 0, zIndex: 199 }}
+                aria-hidden="true"
+              />
+            )}
+          </AnimatePresence>
+        </>
+      )}
 
       {/* ── Card stack ────────────────────────────────────── */}
       <div style={{
@@ -243,56 +268,123 @@ export default function MobilePortfolioLayout() {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <AnimatePresence mode="wait" custom={carouselDir}>
-            <motion.div
-              key={carouselStep}
-              custom={carouselDir}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.22, ease: "easeOut" }}
-            >
-              <div style={{ position: "relative", height: 160, width: "100%" }}>
-                <Image
-                  src={current.image}
-                  alt={current.heading}
-                  fill
-                  className="object-cover"
-                  sizes="480px"
-                  priority
-                />
-              </div>
-              <div style={{ paddingTop: "var(--space-4)", paddingLeft: "var(--space-5)" }}>
-                <div style={{ width: 28, height: 3, borderRadius: 2, background: "var(--accent)" }} />
-              </div>
-              <div style={{
-                padding: "var(--space-3) var(--space-5) var(--space-4)",
-                display: "flex", flexDirection: "column", gap: "var(--space-2)",
-              }}>
-                <h2 style={{
-                  fontSize: "1.375rem",
-                  fontWeight: 800,
-                  fontFamily: "var(--font-display)",
-                  letterSpacing: "-0.02em",
-                  color: "var(--text-primary)",
-                }}>
-                  {current.heading}
-                </h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-                  {current.body.map((p, i) => (
-                    <p key={i} style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "var(--text-secondary)" }}>
-                      {p}
-                    </p>
-                  ))}
+          {/* Slide area with gradient nav overlays */}
+          <div style={{ position: "relative" }}>
+            <AnimatePresence mode="wait" custom={carouselDir}>
+              <motion.div
+                key={carouselStep}
+                custom={carouselDir}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.22, ease: "easeOut" }}
+              >
+                <div style={{ position: "relative", height: 160, width: "100%" }}>
+                  <Image
+                    src={current.image}
+                    alt={current.heading}
+                    fill
+                    className="object-cover"
+                    sizes="480px"
+                    priority
+                  />
                 </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                <div style={{ paddingTop: "var(--space-4)", paddingLeft: "var(--space-5)" }}>
+                  <div style={{ width: 28, height: 3, borderRadius: 2, background: "var(--accent)" }} />
+                </div>
+                <div style={{
+                  padding: "var(--space-3) var(--space-5) var(--space-4)",
+                  display: "flex", flexDirection: "column", gap: "var(--space-2)",
+                }}>
+                  <h2 style={{
+                    fontSize: "1.375rem",
+                    fontWeight: 800,
+                    fontFamily: "var(--font-display)",
+                    letterSpacing: "-0.02em",
+                    color: "var(--text-primary)",
+                  }}>
+                    {current.heading}
+                  </h2>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+                    {current.body.map((p, i) => (
+                      <p key={i} style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "var(--text-secondary)" }}>
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
-          {/* Carousel footer */}
+            {/* Left gradient overlay + arrow */}
+            <div
+              style={{
+                position: "absolute", left: 0, top: 0, bottom: 0, width: 40,
+                pointerEvents: "none", zIndex: 5,
+                opacity: carouselStep === 0 ? 0 : 1,
+                transition: "opacity 0.2s",
+                background: "linear-gradient(to right, rgba(250,252,249,0.92) 20%, transparent)",
+                display: "flex", alignItems: "center", paddingLeft: 4,
+              }}
+            >
+              <div style={{ pointerEvents: "auto" }}>
+                <button
+                  onClick={handleManualBack}
+                  disabled={carouselStep === 0}
+                  style={{
+                    width: 26, height: 26, borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: "var(--card-bg-alt)",
+                    border: "1px solid var(--border)",
+                    color: "var(--text-muted)",
+                    cursor: "pointer",
+                    transition: "background 0.15s, border-color 0.15s, color 0.15s",
+                    flexShrink: 0,
+                  }}
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft size={13} />
+                </button>
+              </div>
+            </div>
+
+            {/* Right gradient overlay + arrow */}
+            <div
+              style={{
+                position: "absolute", right: 0, top: 0, bottom: 0, width: 40,
+                pointerEvents: "none", zIndex: 5,
+                opacity: carouselStep === STEPS.length - 1 ? 0 : 1,
+                transition: "opacity 0.2s",
+                background: "linear-gradient(to left, rgba(250,252,249,0.92) 20%, transparent)",
+                display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 4,
+              }}
+            >
+              <div style={{ pointerEvents: "auto" }}>
+                <button
+                  onClick={handleManualNext}
+                  disabled={carouselStep === STEPS.length - 1}
+                  style={{
+                    width: 26, height: 26, borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: "var(--card-bg-alt)",
+                    border: "1px solid var(--border)",
+                    color: "var(--text-muted)",
+                    cursor: "pointer",
+                    transition: "background 0.15s, border-color 0.15s, color 0.15s",
+                    flexShrink: 0,
+                  }}
+                  aria-label="Next slide"
+                >
+                  <ChevronRight size={13} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Carousel footer — dots only */}
           <div style={{
-            display: "flex", alignItems: "center", justifyContent: "space-between",
+            display: "flex", justifyContent: "center",
             padding: "var(--space-3) var(--space-5) var(--space-4)",
             borderTop: "1px solid var(--border)",
           }}>
@@ -312,41 +404,6 @@ export default function MobilePortfolioLayout() {
                 />
               ))}
             </div>
-            <div style={{ display: "flex", gap: "var(--space-2)" }}>
-              {carouselStep > 0 && (
-                <button
-                  onClick={carouselBack}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 6,
-                    padding: "7px 12px",
-                    borderRadius: "var(--radius-sm)",
-                    background: "var(--card-bg-alt)",
-                    border: "1px solid var(--border)",
-                    color: "var(--text-secondary)",
-                    fontSize: "0.8125rem", fontWeight: 500,
-                    cursor: "pointer",
-                  }}
-                >
-                  <ArrowLeft size={13} /> Back
-                </button>
-              )}
-              {carouselStep < STEPS.length - 1 && (
-                <button
-                  onClick={carouselNext}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 6,
-                    padding: "7px 14px",
-                    borderRadius: "var(--radius-sm)",
-                    background: "var(--accent)",
-                    color: "white", border: "none",
-                    fontSize: "0.8125rem", fontWeight: 600,
-                    cursor: "pointer",
-                  }}
-                >
-                  Next <ArrowRight size={13} />
-                </button>
-              )}
-            </div>
           </div>
         </section>
 
@@ -357,6 +414,9 @@ export default function MobilePortfolioLayout() {
               <span style={SECTION_LABEL}>Skills</span>
               <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
                 Tap any skill to see its definition.
+              </p>
+              <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
+                Skills highlighted in purple are AI-related.
               </p>
             </div>
 
@@ -382,24 +442,18 @@ export default function MobilePortfolioLayout() {
               </div>
             </div>
 
-            {/* Skill definition */}
+            {/* Core skill definition */}
             <AnimatePresence>
-              {activeSkill && SKILL_TOOLTIPS[activeSkill] && (
+              {activeSkill && skillsData.core.includes(activeSkill) && SKILL_TOOLTIPS[activeSkill] && (
                 <motion.div
-                  key={activeSkill}
+                  key={`${activeSkill}-core`}
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
                   style={{ overflow: "hidden" }}
                 >
-                  <div style={{
-                    background: "var(--accent-light)",
-                    borderRadius: "var(--radius-sm)",
-                    padding: "var(--space-3) var(--space-4)",
-                    border: "1px solid var(--accent-border)",
-                    display: "flex", flexDirection: "column", gap: "var(--space-1)",
-                  }}>
+                  <div style={SKILL_DEF_BLOCK}>
                     <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)" }}>
                       {activeSkill}
                     </span>
@@ -433,6 +487,29 @@ export default function MobilePortfolioLayout() {
               </div>
             </div>
 
+            {/* Adjacent skill definition */}
+            <AnimatePresence>
+              {activeSkill && skillsData.adjacent.includes(activeSkill) && SKILL_TOOLTIPS[activeSkill] && (
+                <motion.div
+                  key={`${activeSkill}-adjacent`}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ overflow: "hidden" }}
+                >
+                  <div style={SKILL_DEF_BLOCK}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)" }}>
+                      {activeSkill}
+                    </span>
+                    <p style={{ fontSize: "0.8125rem", lineHeight: 1.6, color: "var(--text-secondary)" }}>
+                      {SKILL_TOOLTIPS[activeSkill]}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Tools */}
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
               <span style={GROUP_LABEL}>Tools</span>
@@ -454,6 +531,29 @@ export default function MobilePortfolioLayout() {
                 ))}
               </div>
             </div>
+
+            {/* Tools skill definition */}
+            <AnimatePresence>
+              {activeSkill && skillsData.tools.includes(activeSkill) && SKILL_TOOLTIPS[activeSkill] && (
+                <motion.div
+                  key={`${activeSkill}-tools`}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ overflow: "hidden" }}
+                >
+                  <div style={SKILL_DEF_BLOCK}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)" }}>
+                      {activeSkill}
+                    </span>
+                    <p style={{ fontSize: "0.8125rem", lineHeight: 1.6, color: "var(--text-secondary)" }}>
+                      {SKILL_TOOLTIPS[activeSkill]}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </section>
 
@@ -500,14 +600,15 @@ export default function MobilePortfolioLayout() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={SECTION_LABEL}>Focus</span>
               <button
-                onClick={() => setFocusOpen(true)}
+                onClick={() => { setHamburgerOpen(false); setFocusOpen(true); }}
                 style={{
+                  display: "flex", alignItems: "center", gap: 4,
                   fontSize: "0.75rem", fontWeight: 600,
                   color: "var(--accent)", background: "none", border: "none",
                   cursor: "pointer", padding: 0,
                 }}
               >
-                View breakdown →
+                View breakdown <ArrowUpRight size={12} />
               </button>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
