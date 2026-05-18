@@ -21,6 +21,7 @@ const AI_SKILLS = new Set([
   "Evaluations",
   "Conversation Design",
   "Agentic Workflows",
+  "Claude / Claude Code",
 ]);
 
 const SKILL_TOOLTIPS: Record<string, string> = {
@@ -87,6 +88,16 @@ const SKILL_DEF_BLOCK: CSSProperties = {
   borderRadius: "var(--radius-sm)",
   padding: "var(--space-3) var(--space-4)",
   border: "1px solid var(--accent-border)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-1)",
+};
+
+const SKILL_DEF_BLOCK_NEUTRAL: CSSProperties = {
+  background: "var(--card-bg-alt)",
+  borderRadius: "var(--radius-sm)",
+  padding: "var(--space-3) var(--space-4)",
+  border: "1px solid var(--border)",
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-1)",
@@ -453,8 +464,8 @@ export default function MobilePortfolioLayout() {
                   transition={{ duration: 0.2 }}
                   style={{ overflow: "hidden" }}
                 >
-                  <div style={SKILL_DEF_BLOCK}>
-                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)" }}>
+                  <div style={AI_SKILLS.has(activeSkill) ? SKILL_DEF_BLOCK : SKILL_DEF_BLOCK_NEUTRAL}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: AI_SKILLS.has(activeSkill) ? "var(--accent)" : "var(--text-primary)" }}>
                       {activeSkill}
                     </span>
                     <p style={{ fontSize: "0.8125rem", lineHeight: 1.6, color: "var(--text-secondary)" }}>
@@ -498,8 +509,8 @@ export default function MobilePortfolioLayout() {
                   transition={{ duration: 0.2 }}
                   style={{ overflow: "hidden" }}
                 >
-                  <div style={SKILL_DEF_BLOCK}>
-                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)" }}>
+                  <div style={AI_SKILLS.has(activeSkill) ? SKILL_DEF_BLOCK : SKILL_DEF_BLOCK_NEUTRAL}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: AI_SKILLS.has(activeSkill) ? "var(--accent)" : "var(--text-primary)" }}>
                       {activeSkill}
                     </span>
                     <p style={{ fontSize: "0.8125rem", lineHeight: 1.6, color: "var(--text-secondary)" }}>
@@ -543,8 +554,8 @@ export default function MobilePortfolioLayout() {
                   transition={{ duration: 0.2 }}
                   style={{ overflow: "hidden" }}
                 >
-                  <div style={SKILL_DEF_BLOCK}>
-                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)" }}>
+                  <div style={AI_SKILLS.has(activeSkill) ? SKILL_DEF_BLOCK : SKILL_DEF_BLOCK_NEUTRAL}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: AI_SKILLS.has(activeSkill) ? "var(--accent)" : "var(--text-primary)" }}>
                       {activeSkill}
                     </span>
                     <p style={{ fontSize: "0.8125rem", lineHeight: 1.6, color: "var(--text-secondary)" }}>
@@ -706,11 +717,11 @@ export default function MobilePortfolioLayout() {
                   <Phone size={16} color="var(--accent)" style={{ flexShrink: 0, marginTop: 2 }} />
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     <a href={`tel:${profile.phone}`} style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem" }}>
-                      {profile.phone} <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>US</span>
+                      <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>US</span> {profile.phone}
                     </a>
                     {profile.phone_il && (
                       <a href={`tel:${profile.phone_il}`} style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.875rem" }}>
-                        {profile.phone_il} <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>IL</span>
+                        <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>IL</span> {profile.phone_il}
                       </a>
                     )}
                   </div>
