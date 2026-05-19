@@ -29,7 +29,7 @@ export const STEPS = [
     heading: "About this site",
     body: [
       "I created this site on Claude Code. The design system was developed with React and Node.js, animated with Tailwind, and all the content was created, generated, and evaluated using my very own Kantorbot™ and is managed in a JSON file.",
-      "To see my work, click on any role in my work experience to open the expanded view. In there you can see work samples and other important details about my impact.",
+      "To see my work, select any role in my work experience to open the expanded view. In there you can see work samples and other important details about my impact.",
     ],
     image: "/assets/welcome-wizard/03_about_this_site_image.png",
   },
