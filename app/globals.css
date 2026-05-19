@@ -140,11 +140,16 @@ body {
   align-items: stretch;
 }
 
-/* Left column — static, no scroll */
+/* Left column — scrollable at short viewport heights */
 .resume-shell > aside {
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
+.resume-shell > aside::-webkit-scrollbar       { width: 4px; }
+.resume-shell > aside::-webkit-scrollbar-track { background: transparent; }
+.resume-shell > aside::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 /* Right column — thin system scrollbar */
 .resume-shell > main {
