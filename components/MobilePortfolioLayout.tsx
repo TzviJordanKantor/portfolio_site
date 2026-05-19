@@ -238,7 +238,7 @@ export default function MobilePortfolioLayout() {
 
       {/* ── Card stack ────────────────────────────────────── */}
       <div style={{
-        maxWidth: 480, margin: "0 auto",
+        maxWidth: 720, margin: "0 auto",
         padding: "var(--space-3)", paddingBottom: "var(--space-6)",
         display: "flex", flexDirection: "column", gap: "var(--space-3)",
       }}>
