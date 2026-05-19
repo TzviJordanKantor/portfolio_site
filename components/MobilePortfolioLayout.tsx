@@ -525,11 +525,13 @@ export default function MobilePortfolioLayout() {
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
               <span style={GROUP_LABEL}>Tools</span>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
-                {skillsData.tools.map(skill => (
+                {skillsData.tools.map(skill => {
+                  const isAI = AI_SKILLS.has(skill);
+                  return (
                   <button
                     key={skill}
                     onClick={() => setActiveSkill(activeSkill === skill ? null : skill)}
-                    className="pill-base pill-neutral"
+                    className={`pill-base ${isAI ? "pill-ai" : "pill-neutral"}`}
                     style={{
                       cursor: "pointer",
                       ...(activeSkill === skill
@@ -539,7 +541,8 @@ export default function MobilePortfolioLayout() {
                   >
                     {skill}
                   </button>
-                ))}
+                  );
+                })}
               </div>
             </div>
 

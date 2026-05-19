@@ -16,6 +16,7 @@ const AI_SKILLS = new Set([
   "Evaluations",
   "Conversation Design",
   "Agentic Workflows",
+  "Claude / Claude Code",
 ]);
 
 const SKILL_TOOLTIPS: Record<string, string> = {
@@ -28,6 +29,7 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Evaluations":         "AI output quality rubrics and structured eval protocols.",
   "Conversation Design": "Chat and voice flow architecture for AI products.",
   "Agentic Workflows":   "Autonomous AI pipeline design and orchestration.",
+  "Claude / Claude Code": "AI-assisted content systems, workflow design, and interface prototyping.",
 };
 
 
@@ -191,7 +193,7 @@ export default function Sidebar({ onHeadshotClick }: SidebarProps) {
         >
           <SectionLabel>Skills</SectionLabel>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
-            {skills.core.map((skill) => (
+            {[...skills.core, ...skills.tools.filter((s) => AI_SKILLS.has(s))].map((skill) => (
               <SkillPill key={skill} label={skill} isAI={AI_SKILLS.has(skill)} />
             ))}
           </div>
