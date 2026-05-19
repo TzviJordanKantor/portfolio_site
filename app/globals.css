@@ -201,8 +201,8 @@ body {
    RESPONSIVE
    ───────────────────────────────────────────────────────── */
 
-/* Tablet — revert to page scroll, single column */
-@media (max-width: 860px) {
+/* Tablet/below-desktop — revert to page scroll, single column */
+@media (max-width: 1279px) {
   :root { --shell-pad: 12px; }
 
   html, body {
