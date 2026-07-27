@@ -209,9 +209,14 @@ export default function Sidebar({ onHeadshotClick }: SidebarProps) {
           style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}
         >
           <SectionLabel>Education</SectionLabel>
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {education.map((entry, idx) => (
-              <EducationCard key={entry.institution} entry={entry} highlighted={idx === 0} />
+              <EducationCard
+                key={entry.institution}
+                entry={entry}
+                highlighted={idx === 0}
+                showDivider={idx < education.length - 1}
+              />
             ))}
           </div>
         </motion.div>
@@ -226,9 +231,11 @@ export default function Sidebar({ onHeadshotClick }: SidebarProps) {
 function EducationCard({
   entry,
   highlighted,
+  showDivider,
 }: {
   entry: { institution: string; degree: string; field: string; year: string };
   highlighted: boolean;
+  showDivider: boolean;
 }) {
   const degreePrefix =
     entry.degree !== "Bootcamp" && entry.degree !== "Certificate"
@@ -236,20 +243,13 @@ function EducationCard({
       : "";
 
   return (
-    <motion.div
-      whileHover={{ y: -2, boxShadow: "0 6px 18px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04)" }}
-      transition={{ duration: 0.15 }}
+    <div
       style={{
-        borderRadius: "var(--radius-md)",
-        padding: "var(--space-3) var(--space-4)",
+        padding: "var(--space-2) 0",
         display: "flex",
         flexDirection: "column",
         gap: "var(--space-1)",
-        background:   highlighted ? "var(--accent-light)"   : "var(--sidebar-card-bg)",
-        boxShadow:    "var(--shadow-soft)",
-        border:       `1px solid ${highlighted ? "var(--accent-border)" : "var(--sidebar-border)"}`,
-        cursor: "default",
-        transition: "box-shadow 0.15s",
+        borderBottom: showDivider ? "1px solid var(--sidebar-border)" : "none",
       }}
     >
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "var(--space-2)" }}>
@@ -273,7 +273,7 @@ function EducationCard({
       }}>
         {degreePrefix}{entry.field}
       </span>
-    </motion.div>
+    </div>
   );
 }
 
