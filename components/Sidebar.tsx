@@ -190,6 +190,9 @@ export default function Sidebar({ onHeadshotClick }: SidebarProps) {
           style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}
         >
           <SectionLabel>Skills</SectionLabel>
+          <p style={{ fontSize: "0.6875rem", color: "var(--text-muted)", marginTop: -6 }}>
+            Skills highlighted in purple are AI-related.
+          </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
             {[...skills.core, ...skills.tools.filter((s) => AI_SKILLS.has(s))].map((skill) => (
               <SkillPill key={skill} label={skill} isAI={AI_SKILLS.has(skill)} />
