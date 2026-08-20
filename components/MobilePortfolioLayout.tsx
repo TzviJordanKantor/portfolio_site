@@ -29,7 +29,7 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Localization": "Multi-language content architecture and copy reviews.",
   "User Research": "Interviews, heuristic audits, and usability analysis.",
   "Prompt Engineering": "LLM instruction design, chain-of-thought, and output optimization.",
-  "Content Systems": "Scalable docs, governance, and component content architecture.",
+  "Content Systems": "One content system across marketing assets, landing pages, user flows, support docs, and chat conversation design, each with a unique tone and consistent language. Ask me about my Kantorbot™.",
   "Evaluations": "AI output quality rubrics and structured eval protocols.",
   "Conversation Design": "Chat and voice flow architecture for AI products.",
   "Agentic Workflows": "Autonomous AI pipeline design and orchestration, plus content systems, workflows, and interface prototypes built with Claude and Claude Code.",

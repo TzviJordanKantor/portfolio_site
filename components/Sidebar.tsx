@@ -24,7 +24,7 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Localization":        "Multi-language content architecture and copy reviews.",
   "User Research":       "Interviews, heuristic audits, and usability analysis.",
   "Prompt Engineering":  "LLM instruction design, chain-of-thought, and output optimization.",
-  "Content Systems":     "Scalable docs, governance, and component content architecture.",
+  "Content Systems":     "One content system across marketing assets, landing pages, user flows, support docs, and chat conversation design, each with a unique tone and consistent language. Ask me about my Kantorbot™.",
   "Evaluations":         "AI output quality rubrics and structured eval protocols.",
   "Conversation Design": "Chat and voice flow architecture for AI products.",
   "Agentic Workflows":   "Autonomous AI pipeline design and orchestration, plus content systems, workflows, and interface prototypes built with Claude and Claude Code.",
@@ -356,14 +356,17 @@ function ContactItem({
 function SkillPill({ label, isAI }: { label: string; isAI: boolean }) {
   const tooltip = SKILL_TOOLTIPS[label];
   const [hovered, setHovered] = useState(false);
-  const [tipPos, setTipPos] = useState<{ top: number; left: number } | null>(null);
+  const [tipPos, setTipPos] = useState<{ top: number; left: number; caret: number } | null>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
 
   const handleEnter = useCallback(() => {
     setHovered(true);
     if (tooltip && pillRef.current) {
       const r = pillRef.current.getBoundingClientRect();
-      setTipPos({ top: r.top - 10, left: r.left + r.width / 2 });
+      const half = 128; // maxWidth/2 + margin — keeps a wide tooltip on-screen
+      const center = r.left + r.width / 2;
+      const left = Math.max(half, Math.min(window.innerWidth - half, center));
+      setTipPos({ top: r.top - 10, left, caret: center - left });
     }
   }, [tooltip]);
 
@@ -430,7 +433,7 @@ function SkillPill({ label, isAI }: { label: string; isAI: boolean }) {
             <span style={{
               position: "absolute",
               top: "100%",
-              left: "50%",
+              left: `calc(50% + ${Math.max(-104, Math.min(104, tipPos.caret))}px)`,
               transform: "translateX(-50%)",
               width: 0,
               height: 0,
