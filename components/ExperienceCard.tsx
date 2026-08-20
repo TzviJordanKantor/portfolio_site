@@ -86,7 +86,7 @@ export default function ExperienceCard({ experience, index, onClick, showMobileA
 
       {/* Content */}
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "var(--space-2)" }}>
+        <div style={{ display: "flex", flexDirection: showMobileAffordance ? "column" : "row", alignItems: "flex-start", justifyContent: "space-between", gap: "var(--space-2)" }}>
           <div>
             <h3 style={{
               fontSize: "0.9375rem",
@@ -102,7 +102,7 @@ export default function ExperienceCard({ experience, index, onClick, showMobileA
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", flexShrink: 0, flexWrap: showMobileAffordance ? "wrap" : "nowrap", marginTop: showMobileAffordance ? 4 : 0 }}>
             {experience.caseStudySlug && (
               <span
                 style={{
