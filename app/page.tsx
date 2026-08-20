@@ -34,8 +34,17 @@ export default function Home() {
   const [isScrollable, setIsScrollable] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
-  // Show wizard on first visit; never on SSR
+  // On mount: reopen a role's drawer when returning from its case study
+  // (/?exp=<id>). Otherwise show the welcome wizard on first visit.
   useEffect(() => {
+    const expId = new URLSearchParams(window.location.search).get("exp");
+    if (expId) {
+      const exp = experiences.find((e) => e.id === expId);
+      if (exp) {
+        setSelectedExp(exp);
+        return;
+      }
+    }
     const seen = localStorage.getItem(WELCOME_STORAGE_KEY);
     if (!seen) setWizardOpen(true);
   }, []);

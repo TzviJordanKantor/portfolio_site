@@ -21,7 +21,6 @@ const AI_SKILLS = new Set([
   "Evaluations",
   "Conversation Design",
   "Agentic Workflows",
-  "Claude / Claude Code",
 ]);
 
 const SKILL_TOOLTIPS: Record<string, string> = {
@@ -33,7 +32,7 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Content Systems": "Scalable docs, governance, and component content architecture.",
   "Evaluations": "AI output quality rubrics and structured eval protocols.",
   "Conversation Design": "Chat and voice flow architecture for AI products.",
-  "Agentic Workflows": "Autonomous AI pipeline design and orchestration.",
+  "Agentic Workflows": "Autonomous AI pipeline design and orchestration, plus content systems, workflows, and interface prototypes built with Claude and Claude Code.",
   "Accessibility": "I write and structure interface content so more people can understand, navigate, and recover from mistakes.",
   "Workshop Facilitation": "I lead working sessions, guilds, and presentations that help teams align around better product language.",
   "Information Architecture": "I organize product and content structures so people can find, understand, and act on information.",
@@ -44,7 +43,6 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Jira": "I use Jira to track UX writing work across product and engineering workflows.",
   "Confluence": "I use Confluence to document standards, decisions, and reusable guidance.",
   "Miro": "I use Miro to map flows, facilitate workshops, and structure early thinking.",
-  "Claude / Claude Code": "I use Claude and Claude Code to structure content systems, build workflows, and ship working interface prototypes.",
 };
 
 const NAV_SECTIONS = [

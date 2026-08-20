@@ -183,42 +183,10 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
 
                 {/* Featured case-study entry point */}
                 {experience.caseStudySlug && (
-                  <Link
-                    href={`/work/${experience.caseStudySlug}`}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "var(--space-3)",
-                      padding: "var(--space-4) var(--space-4)",
-                      borderRadius: "var(--radius-md)",
-                      background: FEATURED_GREEN + "0F",
-                      border: `1px solid ${FEATURED_GREEN}33`,
-                      textDecoration: "none",
-                    }}
-                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] group"
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", minWidth: 0 }}>
-                      <span
-                        className="featured-pill-icon"
-                        aria-hidden="true"
-                        style={{ color: FEATURED_GREEN, flexShrink: 0 }}
-                      >
-                        <Sparkles size={18} />
-                      </span>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 1, minWidth: 0 }}>
-                        <span style={{ fontSize: "0.8125rem", fontWeight: 700, fontFamily: "var(--font-display)", color: FEATURED_GREEN }}>
-                          {experience.caseStudyLabel ?? "Featured case study"}
-                        </span>
-                        <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: 1.4 }}>
-                          Read the full ARPU staging write-up
-                        </span>
-                      </div>
-                    </div>
-                    <span style={{ color: FEATURED_GREEN, display: "flex", flexShrink: 0 }}>
-                      <ArrowRight size={16} />
-                    </span>
-                  </Link>
+                  <FeaturedCaseStudyBanner
+                    slug={experience.caseStudySlug}
+                    label={experience.caseStudyLabel ?? "Featured case study"}
+                  />
                 )}
 
                 {/* Overview */}
@@ -441,6 +409,51 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
 
       <SampleModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </>
+  );
+}
+
+/* ── FeaturedCaseStudyBanner ─────────────────────────────────
+   Flashing outline (via .featured-flash) draws the eye; the hover
+   state (background lift, shadow, arrow nudge) signals it is clickable. */
+
+function FeaturedCaseStudyBanner({ slug, label }: { slug: string; label: string }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <Link
+      href={`/work/${slug}`}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="featured-flash focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: "var(--space-3)",
+        padding: "var(--space-4)",
+        borderRadius: "var(--radius-md)",
+        background: hover ? FEATURED_GREEN + "1C" : FEATURED_GREEN + "0F",
+        boxShadow: hover ? "0 6px 20px rgba(46,125,110,0.18)" : "none",
+        textDecoration: "none",
+        transition: "background 0.18s, box-shadow 0.18s",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", minWidth: 0 }}>
+        <span className="featured-pill-icon" aria-hidden="true" style={{ color: FEATURED_GREEN, flexShrink: 0 }}>
+          <Sparkles size={18} />
+        </span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 1, minWidth: 0 }}>
+          <span style={{ fontSize: "0.8125rem", fontWeight: 700, fontFamily: "var(--font-display)", color: FEATURED_GREEN }}>
+            {label}
+          </span>
+          <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: 1.4 }}>
+            Read the full staging feature write-up
+          </span>
+        </div>
+      </div>
+      <span style={{ color: FEATURED_GREEN, display: "flex", flexShrink: 0, transform: hover ? "translateX(3px)" : "translateX(0)", transition: "transform 0.18s" }}>
+        <ArrowRight size={16} />
+      </span>
+    </Link>
   );
 }
 

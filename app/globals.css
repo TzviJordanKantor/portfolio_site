@@ -175,17 +175,20 @@ body {
    FEATURED CASE-STUDY PILL — gentle pulse on the star icon
    Sage/green (never the AI purple). Honors reduced-motion.
    ───────────────────────────────────────────────────────── */
-.featured-pill-icon {
-  display: flex;
-  animation: featured-pulse 2.4s ease-in-out infinite;
-  transform-origin: center;
+.featured-pill-icon { display: flex; }
+
+/* Featured case-study outline: a broad dark-to-light border flash that draws
+   the eye without touching the pill background. Deep forest green to light. */
+.featured-flash {
+  border: 1.5px solid #17463C;
+  animation: featured-flash 2.1s ease-in-out infinite;
 }
-@keyframes featured-pulse {
-  0%, 100% { opacity: 0.65; transform: scale(1); }
-  50%      { opacity: 1;    transform: scale(1.18); }
+@keyframes featured-flash {
+  0%, 100% { border-color: #17463C; }  /* forest-green depth */
+  50%      { border-color: #BBD9CF; }  /* light sage */
 }
 @media (prefers-reduced-motion: reduce) {
-  .featured-pill-icon { animation: none; opacity: 1; }
+  .featured-flash { animation: none; border-color: #2E7D6E; }
 }
 
 /* ─────────────────────────────────────────────────────────

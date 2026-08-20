@@ -16,7 +16,6 @@ const AI_SKILLS = new Set([
   "Evaluations",
   "Conversation Design",
   "Agentic Workflows",
-  "Claude / Claude Code",
 ]);
 
 const SKILL_TOOLTIPS: Record<string, string> = {
@@ -28,8 +27,7 @@ const SKILL_TOOLTIPS: Record<string, string> = {
   "Content Systems":     "Scalable docs, governance, and component content architecture.",
   "Evaluations":         "AI output quality rubrics and structured eval protocols.",
   "Conversation Design": "Chat and voice flow architecture for AI products.",
-  "Agentic Workflows":   "Autonomous AI pipeline design and orchestration.",
-  "Claude / Claude Code": "AI-assisted content systems, workflow design, and interface prototyping.",
+  "Agentic Workflows":   "Autonomous AI pipeline design and orchestration, plus content systems, workflows, and interface prototypes built with Claude and Claude Code.",
 };
 
 

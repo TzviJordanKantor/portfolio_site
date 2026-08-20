@@ -15,6 +15,7 @@ const ALT_BG = "#E7EEE9";
 const ACCENT = "#2E7D6E"; // sage-green; purple stays reserved for AI
 
 const BASE = "/case-studies/staging";
+const BACK_HREF = "/?exp=elementor"; // return to the dashboard with the Elementor drawer open
 
 /* ── Content ─────────────────────────────────────────────────
    Copy generated through the Content system (voice-dna).
@@ -335,7 +336,7 @@ export default function StagingCaseStudy() {
       {/* Top bar */}
       <div style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(242,246,243,0.86)", backdropFilter: "blur(8px)", borderBottom: "1px solid var(--border)" }}>
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "var(--space-3) var(--space-6)" }}>
-          <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: "0.8125rem", fontWeight: 600, color: "var(--text-secondary)", textDecoration: "none" }}>
+          <Link href={BACK_HREF} style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: "0.8125rem", fontWeight: 600, color: "var(--text-secondary)", textDecoration: "none" }}>
             <ArrowLeft size={15} />
             Back to dashboard
           </Link>
@@ -496,7 +497,7 @@ function BackToDashboardCta() {
   const [hover, setHover] = useState(false);
   return (
     <Link
-      href="/"
+      href={BACK_HREF}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{

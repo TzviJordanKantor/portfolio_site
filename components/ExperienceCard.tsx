@@ -115,9 +115,9 @@ export default function ExperienceCard({ experience, index, onClick, showMobileA
                   borderRadius: "var(--radius-sm)",
                   background: FEATURED_GREEN + "14",
                   color: FEATURED_GREEN,
-                  border: `1px solid ${FEATURED_GREEN}33`,
                   whiteSpace: "nowrap",
                 }}
+                className="featured-flash"
                 title={experience.caseStudyLabel ?? "Featured case study"}
               >
                 <span className="featured-pill-icon" aria-hidden="true">
