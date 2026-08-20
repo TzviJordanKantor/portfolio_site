@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import type { Experience } from "@/types";
+
+const FEATURED_GREEN = "#2E7D6E";
 
 interface ExperienceCardProps {
   experience: Experience;
@@ -101,6 +103,29 @@ export default function ExperienceCard({ experience, index, onClick, showMobileA
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", flexShrink: 0 }}>
+            {experience.caseStudySlug && (
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 5,
+                  fontSize: "0.6875rem",
+                  fontWeight: 600,
+                  padding: "3px 10px",
+                  borderRadius: "var(--radius-sm)",
+                  background: FEATURED_GREEN + "14",
+                  color: FEATURED_GREEN,
+                  border: `1px solid ${FEATURED_GREEN}33`,
+                  whiteSpace: "nowrap",
+                }}
+                title={experience.caseStudyLabel ?? "Featured case study"}
+              >
+                <span className="featured-pill-icon" aria-hidden="true">
+                  <Sparkles size={12} />
+                </span>
+                {experience.caseStudyLabel ?? "Featured case study"}
+              </span>
+            )}
             <span style={{
               fontSize: "0.6875rem",
               fontWeight: 500,

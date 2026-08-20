@@ -165,6 +165,29 @@ body {
 /* Carousel rail — hide scrollbar cross-browser */
 .carousel-rail::-webkit-scrollbar { display: none; }
 
+/* Case-study floating table of contents — hide when the viewport is too
+   narrow to fit it beside the centered content. */
+@media (max-width: 1320px) {
+  .case-toc { display: none !important; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   FEATURED CASE-STUDY PILL — gentle pulse on the star icon
+   Sage/green (never the AI purple). Honors reduced-motion.
+   ───────────────────────────────────────────────────────── */
+.featured-pill-icon {
+  display: flex;
+  animation: featured-pulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes featured-pulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .featured-pill-icon { animation: none; opacity: 1; }
+}
+
 /* ─────────────────────────────────────────────────────────
    SKILL PILLS
    Hover states defined here; component applies the classes.

@@ -53,3 +53,8 @@ CONTENT_STRING_REVIEW.csv
 CONTENT_STRING_REVIEW_README.md
 CONTENT_STRING_INVENTORY_FOR_HUMAN_REVIEW.md
 docs/
+
+# Internal raw work-sample decks — keep local, never publish
+/public/assets/work-samples/**/*.pptx
+/public/assets/work-samples/**/*.pdf
+/public/assets/work-samples/**/*.docx

@@ -2,8 +2,11 @@
 
 import { useEffect, useCallback, useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Briefcase, CheckCircle2, Wrench, Tag, FileText, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Briefcase, CheckCircle2, Wrench, Tag, FileText, ChevronDown, ChevronLeft, ChevronRight, Sparkles, ArrowRight } from "lucide-react";
+
+const FEATURED_GREEN = "#2E7D6E";
 import SampleModal from "@/components/SampleModal";
 import type { Experience, Project } from "@/types";
 
@@ -177,6 +180,46 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
               <div style={{ padding: "var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
 
                 <div style={{ height: 3, width: 48, borderRadius: 99, background: experience.color }} />
+
+                {/* Featured case-study entry point */}
+                {experience.caseStudySlug && (
+                  <Link
+                    href={`/work/${experience.caseStudySlug}`}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "var(--space-3)",
+                      padding: "var(--space-4) var(--space-4)",
+                      borderRadius: "var(--radius-md)",
+                      background: FEATURED_GREEN + "0F",
+                      border: `1px solid ${FEATURED_GREEN}33`,
+                      textDecoration: "none",
+                    }}
+                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] group"
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", minWidth: 0 }}>
+                      <span
+                        className="featured-pill-icon"
+                        aria-hidden="true"
+                        style={{ color: FEATURED_GREEN, flexShrink: 0 }}
+                      >
+                        <Sparkles size={18} />
+                      </span>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 1, minWidth: 0 }}>
+                        <span style={{ fontSize: "0.8125rem", fontWeight: 700, fontFamily: "var(--font-display)", color: FEATURED_GREEN }}>
+                          {experience.caseStudyLabel ?? "Featured case study"}
+                        </span>
+                        <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: 1.4 }}>
+                          Read the full ARPU staging write-up
+                        </span>
+                      </div>
+                    </div>
+                    <span style={{ color: FEATURED_GREEN, display: "flex", flexShrink: 0 }}>
+                      <ArrowRight size={16} />
+                    </span>
+                  </Link>
+                )}
 
                 {/* Overview */}
                 <section>

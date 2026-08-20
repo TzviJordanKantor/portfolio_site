@@ -46,4 +46,8 @@ export interface Experience {
   owned: string[];
   tools: string[];
   projects: Project[];
+  /** When set, this role has a linkable long-form case study at /work/<slug>. */
+  caseStudySlug?: string;
+  /** Short label for the featured case study, shown on the card + drawer. */
+  caseStudyLabel?: string;
 }

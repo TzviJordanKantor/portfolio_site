@@ -325,7 +325,9 @@
           }
         ]
       }
-    ]
+    ],
+    "caseStudySlug": "staging",
+    "caseStudyLabel": "Featured case study"
   },
   {
     "id": "wix",
@@ -503,10 +505,22 @@
           "Client reported increased donor engagement in the first fundraising cycle after launch"
         ],
         "samples": [
-          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-01-homepage.png", "caption": "Homepage introducing the mission and primary donation path" },
-          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-02-how-we-help.png", "caption": "\"How We Help\" programs overview with six program areas" },
-          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-03-story-article.png", "caption": "Long-form story article with donor-facing campaign messaging" },
-          { "src": "/assets/work-samples/webetter/webetter-tzfat-charity-04-donation-checkout.png", "caption": "Donation checkout — final conversion step in the campaign flow" }
+          {
+            "src": "/assets/work-samples/webetter/webetter-tzfat-charity-01-homepage.png",
+            "caption": "Homepage introducing the mission and primary donation path"
+          },
+          {
+            "src": "/assets/work-samples/webetter/webetter-tzfat-charity-02-how-we-help.png",
+            "caption": "\"How We Help\" programs overview with six program areas"
+          },
+          {
+            "src": "/assets/work-samples/webetter/webetter-tzfat-charity-03-story-article.png",
+            "caption": "Long-form story article with donor-facing campaign messaging"
+          },
+          {
+            "src": "/assets/work-samples/webetter/webetter-tzfat-charity-04-donation-checkout.png",
+            "caption": "Donation checkout — final conversion step in the campaign flow"
+          }
         ]
       },
       {
@@ -525,8 +539,14 @@
           "Succesfully opened up new markets and repeating revenue streams"
         ],
         "samples": [
-          { "src": "/assets/work-samples/webetter/webetter-jerusalem-delights-01-about.png", "caption": "About Us page introducing the catering brand, differentiators, and service areas" },
-          { "src": "/assets/work-samples/webetter/webetter-jerusalem-delights-02-about-continued.png", "caption": "About Us continued — customer testimonials and call to action" }
+          {
+            "src": "/assets/work-samples/webetter/webetter-jerusalem-delights-01-about.png",
+            "caption": "About Us page introducing the catering brand, differentiators, and service areas"
+          },
+          {
+            "src": "/assets/work-samples/webetter/webetter-jerusalem-delights-02-about-continued.png",
+            "caption": "About Us continued — customer testimonials and call to action"
+          }
         ]
       }
     ]
