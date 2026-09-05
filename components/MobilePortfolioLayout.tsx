@@ -112,6 +112,16 @@ export default function MobilePortfolioLayout() {
 
   const hasOpenOverlay = Boolean(selectedExp || focusOpen);
 
+  // On mount: reopen a role's drawer when returning from its case study
+  // (/?exp=<id>), matching the desktop layout. Without this, "Back to dashboard"
+  // from a case study lands on the bare dashboard on mobile.
+  useEffect(() => {
+    const expId = new URLSearchParams(window.location.search).get("exp");
+    if (!expId) return;
+    const exp = experiences.find((e) => e.id === expId);
+    if (exp) setSelectedExp(exp);
+  }, []);
+
   // Auto-rotate: resets whenever carouselStep changes (manual or auto)
   useEffect(() => {
     const timer = setInterval(() => {

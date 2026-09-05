@@ -1,5 +1,47 @@
 [
   {
+    "id": "eastend",
+    "company": "East End Neuropsych",
+    "role": "Digital Product & Content Systems Consultant",
+    "period": "2026 – Present",
+    "location": "Centereach, New York (remote)",
+    "logo": "/assets/logos/eastend.png",
+    "logoText": "EE",
+    "logoBg": "#FFFFFF",
+    "color": "#2E7D6E",
+    "summary": "Own the digital product and content systems for a New York geriatric psychiatry practice: the patient platform and staff back office, the clinical education ecosystem, and an AI-assisted provider outreach pipeline built on public federal data.",
+    "expanded": "At East End Neuropsych I joined the initial build of the practice's patient platform, then took ownership to complete, launch and operate it. The role spans product, content and operations: a custom intake pipeline, the staff back office behind it, the clinical education and discoverability ecosystem, and the referral outreach system this case study covers. A theme runs through the work: systems that looked like they were working. A malformed robots.txt had quietly removed the site from Google; I found it and rebuilt search from the sitemap up.",
+    "wins": [
+      "Completed, launched and now operate the practice's patient platform, including a custom intake pipeline handling signatures, insurance documents and consent.",
+      "Built the staff back office where the front desk manages submissions, fees and secure accounts.",
+      "Built an automated provider outreach pipeline across 2,500+ targeted providers, from federal registry data through to human-approved sending with delivery tracking.",
+      "Run the practice's content and discoverability ecosystem: clinical education, the medical-safety standard governing it, patient resources, SEO and social.",
+      "Diagnosed and recovered a full-site deindexing caused by a malformed robots.txt, then rebuilt the search infrastructure underneath it: sitemap, canonicals, structured data, and a daily guard against regression.",
+      "Wrote the medical-safety content standard that governs everything published under the practice's name."
+    ],
+    "owned": [
+      "Patient intake platform",
+      "Staff back office",
+      "Provider outreach pipeline",
+      "Campaign tracking and delivery analytics",
+      "Clinical education library",
+      "Medical-safety content standard",
+      "SEO and structured data",
+      "Agent workflows and approval gates"
+    ],
+    "tools": [
+      "Claude",
+      "Google Sheets",
+      "Updox",
+      "Figma",
+      "Vercel",
+      "NPPES / NPI Registry API"
+    ],
+    "projects": [],
+    "caseStudySlug": "fax",
+    "caseStudyLabel": "Automation Case Study"
+  },
+  {
     "id": "cyberark",
     "company": "CyberArk",
     "role": "UX and Product Content Lead",
@@ -327,7 +369,7 @@
       }
     ],
     "caseStudySlug": "staging",
-    "caseStudyLabel": "Featured case study"
+    "caseStudyLabel": "Writing Case Study"
   },
   {
     "id": "wix",

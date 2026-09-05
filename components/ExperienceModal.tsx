@@ -140,7 +140,7 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
                   <div style={{
                     width: 48, height: 48, borderRadius: "14px",
                     overflow: "hidden", position: "relative", flexShrink: 0,
-                    background: experience.color + "18",
+                    background: experience.logoBg ?? experience.color + "18",
                     border: `1px solid ${experience.color}22`,
                   }}>
                     {experience.logo ? (

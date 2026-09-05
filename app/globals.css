@@ -171,6 +171,41 @@ body {
   .case-toc { display: none !important; }
 }
 
+/* Case-study scrolling sheet — the rail holds two copies of the row set and
+   travels exactly half its own height, so the wrap is invisible. */
+.sheet-rail {
+  animation: sheet-scroll var(--sheet-duration, 42s) linear infinite;
+  will-change: transform;
+}
+@keyframes sheet-scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+.sheet-viewport:hover .sheet-rail { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .sheet-rail { animation: none; }
+}
+
+/* Case-study data tables — stack into labelled blocks on narrow screens.
+   A three-column grid squeezes the last column to two or three words per line
+   on a phone, so below this width each row becomes one block and every cell
+   carries its own column label. */
+@media (max-width: 620px) {
+  .cs-table .cs-head { display: none !important; }
+  .cs-table .cs-row  { grid-template-columns: minmax(0, 1fr) !important; padding: var(--space-2) 0; }
+  .cs-table .cs-cell { padding: var(--space-2) var(--space-4) !important; }
+  .cs-table .cs-cell[data-label]:not([data-label=""])::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+}
+
 /* ─────────────────────────────────────────────────────────
    FEATURED CASE-STUDY PILL — gentle pulse on the star icon
    Sage/green (never the AI purple). Honors reduced-motion.

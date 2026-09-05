@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Pipeline diagram. Build stage: NPI Registry API, filter and normalize, tier and assign coversheet, campaign tracker of 2,521 rows. Operate stage, repeated once per batch: reserve the batch, agent prepares and verifies, human types an approval, Updox sends, verify every record and write back to the tracker, which loops back to reserve.">
+  <defs>
+    <style>
+      .t   { font-family: Outfit, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .ttl { font-weight: 700; font-size: 15px; fill: #1A2B1C; }
+      .sub { font-weight: 400; font-size: 12.5px; fill: #4B5E4D; }
+      .num { font-weight: 700; font-size: 12.5px; fill: #2E7D6E; }
+      .band{ font-weight: 700; font-size: 11px; fill: #7B8E7D; letter-spacing: 1.6px; }
+      .gate-ttl { font-weight: 700; font-size: 15px; fill: #FFFFFF; }
+      .gate-sub { font-weight: 400; font-size: 12.5px; fill: #D9EAE4; }
+      .gate-num { font-weight: 700; font-size: 12.5px; fill: #FFFFFF; }
+      .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    </style>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8FA694"/>
+    </marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2E7D6E"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="600" fill="#F2F6F3"/>
+
+  <!-- ══ BAND 1 : BUILD ══ -->
+  <text class="t band" x="40" y="46">BUILD · ONCE</text>
+  <line x1="40" y1="58" x2="1160" y2="58" stroke="#D2DDD4" stroke-width="1"/>
+
+  <g class="t">
+    <!-- 1 -->
+    <rect x="40" y="82" width="248" height="104" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="60" y="108">01</text>
+    <text class="ttl" x="60" y="132">NPI Registry API</text>
+    <text class="sub" x="60" y="152">239 Long Island ZIPs,</text>
+    <text class="sub" x="60" y="169">69 taxonomy codes</text>
+
+    <!-- 2 -->
+    <rect x="330" y="82" width="248" height="104" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="350" y="108">02</text>
+    <text class="ttl" x="350" y="132">Filter and normalize</text>
+    <text class="sub" x="350" y="152">32,053 rows in,</text>
+    <text class="sub" x="350" y="169">12,559 carry a fax</text>
+
+    <!-- 3 -->
+    <rect x="620" y="82" width="248" height="104" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="640" y="108">03</text>
+    <text class="ttl" x="640" y="132">Tier and assign</text>
+    <text class="sub" x="640" y="152">Tiers A–D, priority P1–P3,</text>
+    <text class="sub" x="640" y="169">1 of 4 coversheets</text>
+
+    <!-- 4 -->
+    <rect x="910" y="82" width="250" height="104" rx="14" fill="#E7EEE9" stroke="#2E7D6E"/>
+    <text class="num" x="930" y="108">04</text>
+    <text class="ttl" x="930" y="132">Campaign tracker</text>
+    <text class="sub" x="930" y="152">2,521 providers across</text>
+    <text class="sub" x="930" y="169">1,901 unique fax lines</text>
+  </g>
+
+  <line x1="292" y1="134" x2="326" y2="134" stroke="#8FA694" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="582" y1="134" x2="616" y2="134" stroke="#8FA694" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="872" y1="134" x2="906" y2="134" stroke="#8FA694" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- tracker feeds the loop -->
+  <path d="M1035 190 L1035 224 L22 224 L22 404 L34 404" fill="none" stroke="#2E7D6E" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arA)"/>
+  <text class="t sub" x="586" y="216" text-anchor="middle" fill="#2E7D6E">the tracker is the system of record for every batch</text>
+
+  <!-- ══ BAND 2 : OPERATE ══ -->
+  <text class="t band" x="40" y="300">OPERATE · ONCE PER BATCH</text>
+  <line x1="40" y1="312" x2="1160" y2="312" stroke="#D2DDD4" stroke-width="1"/>
+
+  <g class="t">
+    <!-- A -->
+    <rect x="40" y="338" width="196" height="132" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="58" y="364">05</text>
+    <text class="ttl" x="58" y="388">Reserve</text>
+    <text class="sub" x="58" y="410">Rows marked</text>
+    <text class="mono sub" x="58" y="428">RESERVED</text>
+    <text class="sub" x="58" y="448">with a batch ID.</text>
+    <text class="sub" x="58" y="463">One fax line each.</text>
+
+    <!-- B -->
+    <rect x="271" y="338" width="196" height="132" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="289" y="364">06</text>
+    <text class="ttl" x="289" y="388">Agent prepares</text>
+    <text class="sub" x="289" y="410">Builds the batch,</text>
+    <text class="sub" x="289" y="428">checks the hash,</text>
+    <text class="sub" x="289" y="446">reports. It cannot</text>
+    <text class="sub" x="289" y="463">transmit.</text>
+
+    <!-- C — the gate -->
+    <rect x="502" y="330" width="196" height="148" rx="14" fill="#2E7D6E" stroke="#1F5A4F"/>
+    <text class="gate-num" x="520" y="358">07</text>
+    <text class="gate-ttl" x="520" y="382">Human approval</text>
+    <text class="gate-sub" x="520" y="404">A typed sentence,</text>
+    <text class="gate-sub" x="520" y="422">not a click:</text>
+    <text class="mono gate-sub" x="520" y="444" fill="#FFFFFF">Approved. Send</text>
+    <text class="mono gate-sub" x="520" y="461" fill="#FFFFFF">EEN-NEURO-001.</text>
+
+    <!-- D -->
+    <rect x="733" y="338" width="196" height="132" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="751" y="364">08</text>
+    <text class="ttl" x="751" y="388">Updox sends</text>
+    <text class="sub" x="751" y="410">One compose,</text>
+    <text class="sub" x="751" y="428">N recipients,</text>
+    <text class="sub" x="751" y="446">the group&#8217;s coversheet</text>
+    <text class="sub" x="751" y="463">inherited by all.</text>
+
+    <!-- E -->
+    <rect x="964" y="338" width="196" height="132" rx="14" fill="#FFFFFF" stroke="#D2DDD4"/>
+    <text class="num" x="982" y="364">09</text>
+    <text class="ttl" x="982" y="388">Verify, write back</text>
+    <text class="sub" x="982" y="410">Read each record's</text>
+    <text class="sub" x="982" y="428">own words, not the</text>
+    <text class="sub" x="982" y="446">dashboard's. Then</text>
+    <text class="sub" x="982" y="463">update the tracker.</text>
+  </g>
+
+  <line x1="240" y1="404" x2="267" y2="404" stroke="#8FA694" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="471" y1="404" x2="498" y2="404" stroke="#2E7D6E" stroke-width="1.6" marker-end="url(#arA)"/>
+  <line x1="702" y1="404" x2="729" y2="404" stroke="#2E7D6E" stroke-width="1.6" marker-end="url(#arA)"/>
+  <line x1="933" y1="404" x2="960" y2="404" stroke="#8FA694" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- loop back -->
+  <path d="M1062 474 L1062 522 L138 522 L138 476" fill="none" stroke="#8FA694" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <text class="t sub" x="600" y="515" text-anchor="middle">next batch only if the last one cleared its gate</text>
+
+  <!-- footnote -->
+  <text class="t sub" x="40" y="566" fill="#7B8E7D">Steps 05–09 repeat per batch. Step 07 is the only step that cannot be automated away: it is the point where the campaign becomes irreversible.</text>
+</svg>

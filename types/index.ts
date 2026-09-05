@@ -38,6 +38,8 @@ export interface Experience {
   location: string;
   logo: string | null;
   logoText?: string;
+  /** Overrides the tinted `color`-based logo tile background, e.g. for a logo that needs a plain white backdrop. */
+  logoBg?: string;
   color: string;
   summary: string;
   expanded: string;

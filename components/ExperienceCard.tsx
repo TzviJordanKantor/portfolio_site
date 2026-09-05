@@ -56,7 +56,7 @@ export default function ExperienceCard({ experience, index, onClick, showMobileA
           borderRadius: "14px",
           overflow: "hidden",
           position: "relative",
-          background: experience.color + "18",
+          background: experience.logoBg ?? experience.color + "18",
           border: `1px solid ${experience.color}22`,
         }}
       >
