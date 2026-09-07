@@ -8,6 +8,8 @@ import { X, Briefcase, CheckCircle2, Wrench, Tag, FileText, ChevronDown, Chevron
 
 const FEATURED_GREEN = "#2E7D6E";
 import SampleModal from "@/components/SampleModal";
+import SiteScrollPreview from "@/components/SiteScrollPreview";
+import { SectionHeader } from "@/components/SectionHeader";
 import type { Experience, Project } from "@/types";
 
 const TYPE_META: Record<Project["type"], { label: string; bg: string; color: string }> = {
@@ -208,6 +210,17 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
                   }}>
                     {experience.note}
                   </div>
+                )}
+
+                {/* Small looping preview of the live product, in place of a samples carousel */}
+                {experience.sitePreview && (
+                  <SiteScrollPreview
+                    image={experience.sitePreview.image}
+                    imageWidth={experience.sitePreview.imageWidth}
+                    imageHeight={experience.sitePreview.imageHeight}
+                    caption={experience.sitePreview.caption}
+                    color={experience.color}
+                  />
                 )}
 
                 {/* Work Samples — horizontal carousel */}
@@ -444,7 +457,7 @@ function FeaturedCaseStudyBanner({ slug, label }: { slug: string; label: string 
         </span>
         <div style={{ display: "flex", flexDirection: "column", gap: 1, minWidth: 0 }}>
           <span style={{ fontSize: "0.8125rem", fontWeight: 700, fontFamily: "var(--font-display)", color: FEATURED_GREEN }}>
-            {label}
+            Featured case study
           </span>
           <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: 1.4 }}>
             Read the full {kind} feature write-up
@@ -753,23 +766,3 @@ function AccordionSection({
   );
 }
 
-/* ── SectionHeader ───────────────────────────────────────── */
-
-function SectionHeader({
-  icon, title, color,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  color: string;
-}) {
-  return (
-    <h3 style={{
-      fontSize: "0.625rem", fontWeight: 700, textTransform: "uppercase",
-      letterSpacing: "0.1em", color, fontFamily: "var(--font-display)",
-      display: "flex", alignItems: "center", gap: "var(--space-2)",
-    }}>
-      {icon}
-      {title}
-    </h3>
-  );
-}

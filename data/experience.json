@@ -15,9 +15,7 @@
       "Completed, launched and now operate the practice's patient platform, including a custom intake pipeline handling signatures, insurance documents and consent.",
       "Built the staff back office where the front desk manages submissions, fees and secure accounts.",
       "Built an automated provider outreach pipeline across 2,500+ targeted providers, from federal registry data through to human-approved sending with delivery tracking.",
-      "Run the practice's content and discoverability ecosystem: clinical education, the medical-safety standard governing it, patient resources, SEO and social.",
-      "Diagnosed and recovered a full-site deindexing caused by a malformed robots.txt, then rebuilt the search infrastructure underneath it: sitemap, canonicals, structured data, and a daily guard against regression.",
-      "Wrote the medical-safety content standard that governs everything published under the practice's name."
+      "Run the practice's content and discoverability ecosystem: clinical education, the medical-safety standard governing it, patient resources, SEO and social."
     ],
     "owned": [
       "Patient intake platform",
@@ -39,7 +37,13 @@
     ],
     "projects": [],
     "caseStudySlug": "fax",
-    "caseStudyLabel": "Automation Case Study"
+    "caseStudyLabel": "Automation Case Study",
+    "sitePreview": {
+      "image": "/case-studies/eastend-site/homepage-scroll.jpg",
+      "imageWidth": 1000,
+      "imageHeight": 1931,
+      "caption": "I built this site on Claude, including the HIPAA-compliant patient intake on the front end, and the office management backend."
+    }
   },
   {
     "id": "cyberark",

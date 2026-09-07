@@ -186,6 +186,28 @@ body {
   .sheet-rail { animation: none; }
 }
 
+/* Site-preview scroller — a single (non-duplicated) tall screenshot pans down
+   to reveal it, then fades to transparent, snaps back to the top while
+   invisible, and fades back in. Distinct from .sheet-rail's seamless wrap:
+   the source page isn't cyclical, so a hard loop point would look stitched. */
+.site-preview-rail {
+  animation: site-preview-scroll var(--site-preview-duration, 24s) ease-in-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes site-preview-scroll {
+  0%   { transform: translateY(0);                          opacity: 1; }
+  45%  { transform: translateY(var(--site-preview-travel));  opacity: 1; }
+  55%  { transform: translateY(var(--site-preview-travel));  opacity: 1; }
+  60%  { transform: translateY(var(--site-preview-travel));  opacity: 0; }
+  61%  { transform: translateY(0);                           opacity: 0; }
+  68%  { transform: translateY(0);                           opacity: 1; }
+  100% { transform: translateY(0);                           opacity: 1; }
+}
+.site-preview-viewport:hover .site-preview-rail { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .site-preview-rail { animation: none; }
+}
+
 /* Case-study data tables — stack into labelled blocks on narrow screens.
    A three-column grid squeezes the last column to two or three words per line
    on a phone, so below this width each row becomes one block and every cell

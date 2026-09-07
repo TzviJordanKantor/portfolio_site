@@ -52,4 +52,11 @@ export interface Experience {
   caseStudySlug?: string;
   /** Short label for the featured case study, shown on the card + drawer. */
   caseStudyLabel?: string;
+  /** A small looping preview of the actual product, shown in the drawer in place of the Work Samples carousel. */
+  sitePreview?: {
+    image: string;
+    imageWidth: number;
+    imageHeight: number;
+    caption: string;
+  };
 }
