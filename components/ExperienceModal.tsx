@@ -418,6 +418,7 @@ export default function ExperienceModal({ experience, onClose }: ExperienceModal
 
 function FeaturedCaseStudyBanner({ slug, label }: { slug: string; label: string }) {
   const [hover, setHover] = useState(false);
+  const kind = label.replace(/\s*Case Study$/i, "").toLowerCase();
   return (
     <Link
       href={`/work/${slug}`}
@@ -446,7 +447,7 @@ function FeaturedCaseStudyBanner({ slug, label }: { slug: string; label: string 
             {label}
           </span>
           <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: 1.4 }}>
-            Read the full staging feature write-up
+            Read the full {kind} feature write-up
           </span>
         </div>
       </div>

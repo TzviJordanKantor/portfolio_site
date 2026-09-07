@@ -10,7 +10,7 @@
     "logoBg": "#FFFFFF",
     "color": "#2E7D6E",
     "summary": "Own the digital product and content systems for a New York geriatric psychiatry practice: the patient platform and staff back office, the clinical education ecosystem, and an AI-assisted provider outreach pipeline built on public federal data.",
-    "expanded": "At East End Neuropsych I joined the initial build of the practice's patient platform, then took ownership to complete, launch and operate it. The role spans product, content and operations: a custom intake pipeline, the staff back office behind it, the clinical education and discoverability ecosystem, and the referral outreach system this case study covers. A theme runs through the work: systems that looked like they were working. A malformed robots.txt had quietly removed the site from Google; I found it and rebuilt search from the sitemap up.",
+    "expanded": "At East End Neuropsych I joined the initial build of the practice's patient platform, then took ownership to complete, launch and operate it. The role spans product, content and operations: a custom intake pipeline, the staff back office behind it, the education content ecosystem, discoverability, and the referral outreach system this case study covers.",
     "wins": [
       "Completed, launched and now operate the practice's patient platform, including a custom intake pipeline handling signatures, insurance documents and consent.",
       "Built the staff back office where the front desk manages submissions, fees and secure accounts.",
