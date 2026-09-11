@@ -48,7 +48,7 @@
   {
     "id": "cyberark",
     "company": "CyberArk",
-    "role": "UX and Product Content Lead",
+    "role": "Principal Content Designer",
     "period": "2025 – 2026",
     "location": "Tel Aviv, Israel",
     "logo": "/assets/logos/cyberark.png",
@@ -198,12 +198,14 @@
           }
         ]
       }
-    ]
+    ],
+    "caseStudySlug": "cyberark",
+    "caseStudyLabel": "Systems Case Study"
   },
   {
     "id": "elementor",
     "company": "Elementor",
-    "role": "Sr. Content Designer",
+    "role": "Senior UX Writer",
     "period": "2021 – 2025",
     "location": "Tel Aviv, Israel",
     "logo": "/assets/logos/elementor.png",

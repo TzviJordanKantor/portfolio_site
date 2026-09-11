@@ -359,7 +359,7 @@ export default function StagingCaseStudy() {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-6)", paddingTop: "var(--space-2)" }}>
           {[
             ["Surface", "Elementor Hosting"],
-            ["Role", "Sr. Content Designer"],
+            ["Role", "Senior UX Writer"],
             ["Contributions", "Content design · UX writing · prototyping · design iteration"],
           ].map(([k, v]) => (
             <div key={k} style={{ display: "flex", flexDirection: "column", gap: 2 }}>

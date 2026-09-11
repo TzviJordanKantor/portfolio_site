@@ -58,3 +58,9 @@ docs/
 /public/assets/work-samples/**/*.pptx
 /public/assets/work-samples/**/*.pdf
 /public/assets/work-samples/**/*.docx
+
+# Exception, deliberate: the three CyberArk source documents are authored by Tzvi and
+# are published in full by the /work/cyberark case study, which links to them directly.
+# The NDA on that role covers the product screens (hence the rebuilt UI in that case
+# study), not these. Do not re-block them without also changing that case study.
+!/public/assets/work-samples/cyberark/documents/*.pdf
